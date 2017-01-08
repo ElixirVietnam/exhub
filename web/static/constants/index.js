@@ -1,0 +1,70 @@
+import keyMirror from 'key-mirror';
+
+export const APP_CONFIG = (__PROD__)
+  ? require('./app_config.prod')
+  : require('./app_config.dev');
+
+// Authentication
+export const AUTH = keyMirror({
+  RESET: null,
+  LOGIN_SUBMITTED: null,
+  LOGIN_SUCCEED: null,
+  LOGIN_FAILED: null,
+  LOGOUT: null,
+
+  FETCH_PROFILE: null,
+  FETCH_PROFILE_FAILED: null,
+  FETCH_PROFILE_SUCCEED: null,
+});
+
+export const USERS = keyMirror({
+  FETCH_LIST_USERS_SUBMITTED: null,
+  FETCH_LIST_USERS_SUCCEED: null,
+  FETCH_LIST_USERS_FAILED: null,
+
+  FETCH_USER_BY_ID_SUBMITTED: null,
+  FETCH_USER_BY_ID_SUCCEED: null,
+  FETCH_USER_BY_ID_FAILED: null,
+
+  UPDATE_USER_BY_ID_SUBMITTED: null,
+  UPDATE_USER_BY_ID_SUCCEED: null,
+  UPDATE_USER_BY_ID_FAILED: null,
+
+  SEARCH_USER_SUBMITTED: null,
+  SEARCH_USER_SUCCEED: null,
+  SEARCH_USER_FAILED: null,
+
+  CREATE_USER_SUBMITTED: null,
+  CREATE_USER_SUCCEED: null,
+  CREATE_USER_FAILED: null,
+});
+
+
+export const ENTRIES = keyMirror({
+  FETCH_LIST_ENTRIES_SUBMITTED: null,
+  FETCH_LIST_ENTRIES_SUCCEED: null,
+  FETCH_LIST_ENTRIES_FAILED: null,
+
+  FETCH_ENTRY_BY_ID_SUBMITTED: null,
+  FETCH_ENTRY_BY_ID_SUCCEED: null,
+  FETCH_ENTRY_BY_ID_FAILED: null,
+
+  UPDATE_ENTRY_BY_ID_SUBMITTED: null,
+  UPDATE_ENTRY_BY_ID_SUCCEED: null,
+  UPDATE_ENTRY_BY_ID_FAILED: null,
+
+  CREATE_ENTRY_SUBMITTED: null,
+  CREATE_ENTRY_SUCCEED: null,
+  CREATE_ENTRY_FAILED: null,
+});
+
+
+export const REPORTS = keyMirror({
+  FETCH_LIST_REPORTS_SUBMITTED: null,
+  FETCH_LIST_REPORTS_SUCCEED: null,
+  FETCH_LIST_REPORTS_FAILED: null,
+
+  FETCH_REPORT_BY_ID_SUBMITTED: null,
+  FETCH_REPORT_BY_ID_SUCCEED: null,
+  FETCH_REPORT_BY_ID_FAILED: null,
+});

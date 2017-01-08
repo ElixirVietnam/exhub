@@ -1,0 +1,68 @@
+// Indigo: Sidebar
+	@sidebar-indigo-divider:                saturate(darken(@sidebar-indigo-background, 5%), 1.5%);
+	@sidebar-indigo-static-width: 			260px;
+
+	@sidebar-indigo-background:				desaturate(darken(@brand-indigo, 5%), 5%);
+	@sidebar-indigo-color: 					lighten(@sidebar-indigo-background, 24%);
+	@sidebar-indigo-menu-color: 			lighten(@sidebar-indigo-background, 32%);
+	@sidebar-indigo-icon-color: 			@sidebar-indigo-menu-color;
+
+	@sidebar-indigo-active-bg:				lighten(@sidebar-indigo-background, 17.5%);
+	@sidebar-indigo-active-color:			#fff;
+
+	@sidebar-indigo-hover-bg: 				lighten(@sidebar-indigo-background, 1.5%);
+	@sidebar-indigo-hover-color:            lighten(@sidebar-indigo-background, 60%);
+
+	@sidebar-indigo-submenu-bg: 			darken(@sidebar-indigo-background, 8.5%);
+	@sidebar-indigo-submenu-hover-bg: 		darken(@sidebar-indigo-submenu-bg, 4%);
+	@sidebar-indigo-submenu-color:          lighten(@sidebar-indigo-submenu-bg, 32%);
+
+	@sidebar-indigo-disabled-color: 		desaturate(lighten(@sidebar-indigo-background, 20%), 10%);
+
+	@search-indigo-bg:						@sidebar-indigo-background;
+	@search-indigo-color:                   lighten(@sidebar-indigo-background, 24%);
+
+	@sidebar-indigo-border-top:				lighten(@sidebar-indigo-background, 3.25%);
+	@sidebar-indigo-submenu-open: 			#fff;
+
+
+// Indigo: Horizontal Nav
+
+	@horizontal-indigo-background:     					@sidebar-indigo-background;
+	@horizontal-indigo-menu-color: 						@sidebar-indigo-menu-color;
+	@horizontal-indigo-icon-color: 						@horizontal-indigo-menu-color;
+
+	@horizontal-indigo-active-bg:  						@sidebar-indigo-active-bg;
+	@horizontal-indigo-active-color:  					@sidebar-indigo-active-color;
+
+	@horizontal-indigo-hover-bg: 						@sidebar-indigo-hover-bg;
+	@horizontal-indigo-hover-color: 					@sidebar-indigo-hover-color;
+
+	@horizontal-indigo-submenu-background: 				@sidebar-indigo-submenu-bg;
+	@horizontal-indigo-submenu-item-color: 				@sidebar-indigo-submenu-color;
+	@horizontal-indigo-submenu-item-hover-background: 	@sidebar-indigo-hover-bg;
+	@horizontal-indigo-submenu-item-hover-color: 		@sidebar-indigo-hover-color;
+
+// Indigo: Topnav
+
+	@topnav-indigo-color: lighten(@topnav-indigo-bg-color, 20%);
+	@topnav-indigo-bg-color: desaturate(darken(@brand-indigo, 5%), 5%);
+	@topnav-indigo-border-color: darken(@topnav-indigo-bg-color, 15%);
+
+	@topnav-indigo-brand-color: lighten(@topnav-indigo-bg-color, 27.5%);
+	@topnav-indigo-brand-hover-color: lighten(@topnav-indigo-bg-color, 45%);
+	@topnav-indigo-brand-hover-bg: transparent;
+
+	@topnav-indigo-link-color: lighten(@topnav-indigo-bg-color, 32.5%);
+	@topnav-indigo-link-hover-color: lighten(@topnav-indigo-bg-color, 45%);
+	@topnav-indigo-link-hover-bg: darken(@topnav-indigo-bg-color, 10%);
+	@topnav-indigo-link-active-color: lighten(@topnav-indigo-bg-color, 45%);
+	@topnav-indigo-link-active-bg: darken(@topnav-indigo-bg-color, 14%);
+	@topnav-indigo-link-disabled-color: lighten(@topnav-indigo-bg-color, 10%);
+	@topnav-indigo-link-disabled-bg: transparent;
+
+	@topnav-indigo-dropdown-bg: @topnav-indigo-link-active-bg;
+	@topnav-indigo-dropdown-color: lighten(@topnav-indigo-dropdown-bg, 35%);
+	@topnav-indigo-dropdown-link-color: lighten(@topnav-indigo-dropdown-bg, 35%);
+	@topnav-indigo-dropdown-link-hover-color: lighten(@topnav-indigo-dropdown-bg, 55%);
+	@topnav-indigo-dropdown-link-hover-bg: darken(@topnav-indigo-link-hover-bg, 6.75%);

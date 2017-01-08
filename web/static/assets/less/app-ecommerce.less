@@ -1,0 +1,111 @@
+.store {
+
+	.box {
+		background: #fff;
+		padding: 20px;
+		margin-bottom: 20px;
+		border-radius: @border-radius-base;
+		border: 1px solid @border-darker;
+
+		a:hover {text-decoration: none;}
+
+		h3 a {color: @gray-dark; &:hover {color: @gray-darker;}}
+
+		.product-title .product-price {float: right; margin-bottom: 10px; margin-left: 10px;}
+
+		.product-footer {margin: 0 -20px -20px; padding: 20px; background-color: #f7f8fa; border-top: 1px solid @border-lighter; border-radius: 0 0 @border-radius-base @border-radius-base;}
+	}
+
+	.accordion-title h2 {font-size: @font-size-base; text-transform: uppercase; letter-spacing: 0.1em; color: @gray !important; font-weight: 400 !important;}
+
+	.brand-name {
+		margin-top: 0;
+	}
+
+	li {padding: 0;}
+
+	.rating-list {
+		li {
+			padding: 0;
+			margin-left: 0;
+			margin-bottom: 0;
+		}
+		i {
+			color: @brand-warning;
+		}
+	}
+
+	.price {
+		font-size: 30px;
+		font-weight: 400;
+	}
+
+	.box-col {
+		.product-name {margin-top: 15px; margin-bottom: 15px;}
+		.product-price {}
+		.product-footer {margin: 0 -20px -20px; padding: 20px; background-color: #f7f8fa; border-top: 1px solid @border-lighter; border-radius: 0 0 @border-radius-base @border-radius-base;}
+
+	}
+
+
+
+
+	/* Main carousel style */
+
+
+	.article-slide {
+
+		/* Indicators list style */
+		.carousel-indicators {
+			width: 100%;
+			margin-left: 0;
+			left: 0;
+			bottom: 0;
+			position: relative;
+			margin-top: 20px;
+
+		}
+		/* Indicators list style */
+		.carousel-indicators li {
+		    border: medium none;
+		    border-radius: 0;
+		    height: 67px;
+		    margin-bottom: 5px;
+		    margin-left: 0;
+		    margin-right: 5px !important;
+		    margin-top: 0;
+		    width: 100px;
+		    display: inline-block;
+		}
+		/* Indicators images style */
+		.carousel-indicators img {
+		    border: 2px solid #FFFFFF;
+		    float: left;
+		    height: 67px;
+		    left: 0;
+		    width: 100px;
+		}
+		/* Indicators active image style */
+		.carousel-indicators .active img {
+		    border: 2px solid #428BCA;
+		    opacity: 0.7;
+		}
+
+	}
+
+
+
+	.comments {
+		&:extend(.blog .comments all);
+
+		.media-heading{
+			&:extend(.clearfix all);
+			>a {float: left;}
+
+			>.rating-list {
+				float: right;
+			}
+		}
+	}
+
+}

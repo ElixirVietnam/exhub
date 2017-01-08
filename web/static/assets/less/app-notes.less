@@ -1,0 +1,52 @@
+.note {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAiCAYAAACeLbMRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzVDQUI5RThGQzUxMTFFMzkxMDZDOTdDMTk1RkM2OTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzVDQUI5RTlGQzUxMTFFMzkxMDZDOTdDMTk1RkM2OTEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3NUNBQjlFNkZDNTExMUUzOTEwNkM5N0MxOTVGQzY5MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3NUNBQjlFN0ZDNTExMUUzOTEwNkM5N0MxOTVGQzY5MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuFtxjQAAAAVSURBVHjaYvj//z8Dw2AngIADIMAA6JlipjE2iSgAAAAASUVORK5CYII=) repeat local;
+	line-height: 34px;
+	padding: 0 20px;
+	* {line-height: 34px;}
+}
+
+.notes-container {
+	ul.notes-list {
+		.list-unstyled();
+		margin-bottom: 0;
+		overflow-y: auto;
+		&:extend(.scrollbar-custom all);
+
+		li.notes-snippet {
+			background: @tone-brighter;
+			&:hover {background: @tone-bright;}
+			border-bottom: 1px solid @border-lighter;
+			padding: 10px;
+			cursor: pointer;
+			&.active {
+				background: @tone-bright;
+			}
+			.notes-title {
+				font-weight: 400;
+				font-size: @font-size-base !important;
+			}
+			.notes-desc {
+				font-size: @font-size-small !important;
+				color: @gray;
+			}
+			.notes-date {
+				color: @gray-light;
+				//.text-muted();
+				font-size: @font-size-mini;
+			}
+			.notes-title, .notes-desc, .notes-date {margin: 0; }
+		}
+	}
+}
+
+.notes-sidebar {
+	border-right: 1px solid @border-lighter;
+	.notes-search {
+		padding: 10px;
+		border-bottom: 1px solid @border-lighter;
+	}
+	.notes-options {
+		padding: 10px 10px;
+		border-top: 1px solid @border-lighter;
+	}
+}

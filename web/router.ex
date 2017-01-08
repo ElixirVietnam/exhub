@@ -33,5 +33,8 @@ defmodule ExHub.Router do
 
     get "/graphql", Absinthe.Plug, schema: ExHub.Graphql.Schema
     post "/graphql", Absinthe.Plug, schema: ExHub.Graphql.Schema
+
+    get "/*path", ExHub.PageController, :index
+    post "/*path", ExHub.PageController, :index
   end
 end

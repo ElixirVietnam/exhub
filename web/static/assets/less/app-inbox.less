@@ -1,0 +1,213 @@
+.btn-compose {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+
+.inbox-menu {
+	border-radius: @border-radius-base;
+	border: 1px solid @border-darker;
+	background: @tone-brighter;
+	a {
+		color: @gray-dark;
+		display: block;
+		padding: 10px 15px;
+		&.active {font-weight: 700;}
+	}
+
+	.inbox-menu-item {
+		position: relative;
+		display: block;
+
+		span {
+			float: right;
+		}
+		&:hover {
+			text-decoration: none;
+			color: @gray-dark;
+			background-color: @tone-bright;
+		}
+	}
+
+	.collapsible-menu {
+		border-top: 1px solid @border-darker;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		span.inbox-leftbar-category {
+			a {
+				padding: 7px 15px;
+				display: inline;
+				&.category-heading {
+					float: left;
+					text-transform: uppercase;
+					color: @gray;
+					font-size: @font-size-mini;
+					letter-spacing: 0.1em;
+					&:hover, &.active, &:focus {text-decoration: none;}
+				}
+				&.add-new, &.refresh {
+					float: right;
+					padding: 7px 5px;
+					font-size: 10px;
+					color: @gray-light;
+					&:hover {color: @gray;}
+
+				}
+
+			}
+			.tooltip {min-width: 68px;}
+		}
+	}
+}
+
+.well-inbox {
+	margin-top: 20px;
+	padding: 0 15px;
+	background: @tone-brighter;
+	box-shadow: none;
+	border: 1px solid @border-darker;
+	border-radius: @border-radius-base;
+
+	a i {
+		color: @text-color;
+	}
+
+	.contextual-progress {
+		border: none;
+		padding: 15px;
+		margin: 0 -15px;
+
+		.progress-title {
+			font-size: @font-size-mini;
+			font-weight: 400;
+		}
+
+		.progress-percentage a {
+			&:hover {text-decoration: none;}
+			float: right;
+			font-size: @font-size-mini;
+		}
+
+		.progress {
+			margin-top: 8px !important;
+		}
+	}
+}
+
+
+
+.panel-inbox {
+	.panel-body {
+		background: #fff;
+		padding: 10px;
+		.inbox-compose-form {
+		}
+	}
+	.inbox-mail-heading {
+		margin: -10px -10px 10px -10px;
+		padding: 10px;
+		border-radius: @border-radius-base @border-radius-base 0 0;
+		background: @tone-brighter;
+		border-bottom: 1px solid @border-darker;
+
+		.btn .checkbox-inline {padding-top: 0; height: 16px; margin-top: -2px;}
+
+	}
+	.inbox-mail-footer {
+		margin: 10px -10px -10px -10px;
+		padding: 10px;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
+		background: @tone-brighter;
+		border-top: 1px solid @border-darker;
+
+		.btn .checkbox-inline {padding-top: 0; height: 16px; margin-top: -2px;}
+
+	}
+
+}
+
+.panel-inbox-read {
+	.panel-body {
+		background: #fff;
+		.inbox-read-heading {
+			margin: -20px -20px 20px -20px;
+			padding: 10px;
+			border-radius: @border-radius-base @border-radius-base 0 0;
+			background: @tone-brighter;
+			border-bottom: 1px solid @border-darker;
+
+			.btn .checkbox-inline {padding-top: 0; height: 16px; margin-top: -2px;}
+
+		}
+		.inbox-read-footer {
+			margin: 10px -20px -20px -20px;
+			padding: 10px;
+			border-radius: 0 0 @border-radius-base @border-radius-base;
+			background: @tone-brighter;
+			border-top: 1px solid @border-darker;
+
+			.btn .checkbox-inline {padding-top: 0; height: 16px; margin-top: -2px;}
+
+		}
+
+		.inbox-read-title {
+			margin: 0;
+		}
+		.inbox-read-details {
+			.inbox-read-sender-avatar {float: left; height: 28px; width: 28px; margin-right: 5px;}
+			.inbox-read-sender-name {float: left; display: inline-block; padding: 4px 0; font-weight: 700; }
+			.inbox-read-sender-email {display: inline-block; padding: 4px 0; color: @gray; }
+			.inbox-read-sent-info {float: left; display: inline-block; padding: 4px 0; font-size: @font-size-base; color: @gray; }
+			.btn-group {float: right;}
+
+
+		}
+		.msg-attachments {
+			.well .list-inline {margin: 0;}
+		}
+	}
+
+}
+
+.spmg2 {
+	margin: 2px 0;
+}
+.spmg-2 {
+	margin: -2px 0;
+}
+
+.table-inbox {
+	.inbox-msg-attach, .inbox-msg-time {.hidden-xs()}
+	.inbox-msg-time {.text-right()}
+	.unread {
+		.inbox-msg-from, .inbox-msg-time {font-weight: bold;}
+
+	}
+	.inbox-msg-snip {.label {margin-right: 5px;}}
+
+	.inbox-from-name {font-weight: bold; padding-bottom: 5px;}
+
+	.inbox-msg-check {vertical-align: middle;}
+
+	tbody > tr > td {border: none; cursor: pointer;}
+	tbody > tr:hover > td {background-color: @tone-bright;}
+	tbody > tr:last-child > td:first-child, tbody > tr:last-child > td:last-child {border-radius: 0;}
+}
+
+
+
+.input-search-mail {
+	padding: 0 !important;
+	margin-bottom: 20px;
+	input.form-control {
+		padding-right: 25px ;
+	}
+	a {
+		position: absolute;
+		margin-top: -26px;
+		font-size: @font-size-base;
+		right: 0;
+		margin-right: 20px;
+		color: @gray-light;
+	}
+}

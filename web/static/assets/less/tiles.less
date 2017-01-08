@@ -1,0 +1,407 @@
+//
+// Avalon
+// (c) The Red Team
+//
+// Dashboard Tiles
+// --------------------------------------------------
+
+.tiles-heading, .tiles-body, .tiles-footer {
+	&:extend(.clearfix all);
+	.transition(~"0.05s ease-in");
+}
+
+.info-tiles, .shortcut-tiles {
+	margin: 0px 0px 20px;
+	display: block;
+	border-radius: @border-radius-large;
+}
+a.info-tiles, a.shortcut-tiles {background: none;}
+
+// Info Tiles
+
+.info-tiles {
+	.tiles-heading {
+		letter-spacing: 0.1em;
+		padding: 6px 10px;
+		.border-top-radius(@border-radius-large);
+		text-transform: uppercase;
+		text-align: center;
+		font-size: @font-size-mini;
+
+
+		.pull-right {
+			.transition(~"0.06s ease-in");
+			color: rgba(255,255,255,0.4);
+
+			.sparkline-block {
+				font-size: 0;
+				padding: 2px 0;
+			}
+		}
+	}
+	.tiles-body {
+		font-size: 36px;
+		border-bottom-right-radius: @border-radius-large;
+		border-bottom-left-radius: @border-radius-large;
+
+
+		.text-centered {
+			&:extend(.clearfix all);
+			.easypiechart {
+				margin: 10px auto;
+				height: 80px;
+				line-height: 80px;
+				width: 80px;
+
+				.percent {
+					width: 80px;
+					line-height: 80px;
+					font-size: @font-size-large;
+					font-weight: 300;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+					color: #fff;
+				}
+			}
+			.info-sparkline {
+				font-size: 0;
+				margin: 15px 0;
+			}
+			position: relative;
+			text-align: center;
+			i {
+				position: absolute;
+				margin: auto;
+				top: -5px;
+				left: -5px;
+				color: rgba(255, 255, 255, 0.15);
+				&:hover {color: rgba(255, 255, 255, 0.15)}
+			}
+			.info-text {
+				font-size: 36px;
+				height: 50px;
+				line-height: 50px;
+				color: #fff;
+				.superscript {
+					position: relative;
+					font-size: 18px;
+					top: -16px;
+					color: rgba(255, 255, 255, 0.7);
+				}
+				.subscript {
+					position: relative;
+					font-size: 18px;
+					top: 0px;
+					color: rgba(255, 255, 255, 0.7);
+				}
+
+			}
+			.info-text-bottom {
+				font-size: @font-size-mini;
+				line-height: 20px;
+				height: 20px;
+				color: rgba(255, 255, 255, 0.7);
+
+			}
+		}
+	}
+	.tiles-body-alt {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	&.has-footer .tiles-body {
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	.tiles-body-alt, .tiles-body {
+		padding: 10px 20px;
+		font-weight: 300;
+
+		.subscript {
+			position: relative;
+			font-size: 18px;
+			top: 0px;
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.sparkline {width: 100px; margin: 0 auto; padding: 0px;}
+		.text-top {vertical-align: super; font-size: 24px}
+		.text-smallcaps {font-variant: small-caps;}
+		//.text-center {margin-top: -5px;}
+
+		i {font-size: 36px; color: rgba(255,255,255,0.4); .transition(~"0.06s ease-in");}
+		> i {position: absolute; font-size: 36px;}
+		div + small {font-size: @font-size-base; text-align: center; display: block; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: -7px; margin-bottom: 4px;}
+	}
+	.tiles-footer {
+		color: #fff;
+		font-size: @font-size-mini;
+		color: rgba(255,255,255,0.4);
+		padding: 6px 10px;
+		border-bottom-right-radius: @border-radius-large;
+		border-bottom-left-radius: @border-radius-large;
+
+		.pull-right {
+			.sparkline-block {
+				font-size: 0;
+				padding: 2px 0;
+			}
+		}
+	}
+	&:hover {
+		i {color: rgba(255,255,255,1);}
+		text-decoration: none;
+
+		.text-sparkline i {color: #fff}
+
+		.tiles-footer {
+			.percent-change {color: #fff;}
+		}
+		.tiles-heading .pull-right {color: rgba(255,255,255,1);}
+	}
+}
+
+// Shortcut Tiles
+.shortcut-tiles {
+	.tiles-body {
+		padding: 10px 10px 0px 10px;
+		font-size: 36px;
+		line-height: 35px;
+		border-top-right-radius: @border-radius-large;
+		border-top-left-radius: @border-radius-large;
+		i {
+			font-size: 32px; color: rgba(255,255,255,0.6);; .transition(~"0.06s ease-in");
+		}
+		.pull-right {
+			margin-top: -3px;
+			line-height: 0;
+			.badge {
+				.rgba(black,0.3);
+			}
+		}
+	}
+	.tiles-footer {
+		text-transform: none;
+		text-align: right;
+		padding: 7px 10px;
+		letter-spacing: 0.1em;
+		font-size: @font-size-mini;
+		text-transform: uppercase;
+		border-bottom-right-radius: @border-radius-large;
+		border-bottom-left-radius: @border-radius-large;
+	}
+	&:hover {
+		text-decoration: none;
+		i {color: rgba(255,255,255,1);}
+	}
+}
+
+
+// Tiles Mixin / Generator
+.info-tiles-variant(@color, @text-color:#fff) {
+	.tiles-heading 	{background: lighten(@color,8%);}
+	.tiles-body 	{background: @color;}
+	.tiles-body-alt {background: @color;}
+	.tiles-footer 	{background: darken(@color,4%);}
+	color: @text-color !important;
+	&:hover {
+		.tiles-heading 	{background: lighten(@color,2%);}
+		.tiles-body 	{background: darken(@color,5%);}
+		.tiles-body-alt {background: darken(@color,5%);}
+		.tiles-footer 	{background: darken(@color,9%);}
+		color: @text-color;
+	}
+}
+
+.shortcut-tiles-variant(@color, @text-color:#fff) {
+	.tiles-heading,.tiles-body,.tiles-footer {background: @color;}
+	color: @text-color !important;
+	&:hover {
+		.tiles-heading,.tiles-body,.tiles-footer {background: darken(@color,5%);}
+		color: @text-color;
+	}
+}
+
+// Tiles colors
+.info-tiles {
+	&.tiles-info 			{.info-tiles-variant(@brand-info);}
+	&.tiles-success 		{.info-tiles-variant(@brand-success);}
+	&.tiles-danger 			{.info-tiles-variant(@brand-danger);}
+	&.tiles-warning 		{.info-tiles-variant(@brand-warning);}
+	&.tiles-primary 		{.info-tiles-variant(@brand-primary);}
+	&.tiles-inverse 		{.info-tiles-variant(@brand-inverse);}
+	&.tiles-midnightblue 	{.info-tiles-variant(@brand-midnightblue)}
+	&.tiles-sky 			{.info-tiles-variant(@brand-sky);}
+	&.tiles-orange 			{.info-tiles-variant(@brand-orange)};
+	&.tiles-indigo 			{.info-tiles-variant(@brand-indigo)};
+	&.tiles-green 			{.info-tiles-variant(@brand-green);}
+	&.tiles-blue 			{.info-tiles-variant(@brand-blue);}
+	&.tiles-magenta  		{.info-tiles-variant(@brand-magenta);}
+	&.tiles-purple  		{.info-tiles-variant(@brand-purple);}
+	&.tiles-brown  			{.info-tiles-variant(@brand-brown);}
+	&.tiles-grape			{.info-tiles-variant(@brand-grape);}
+	&.tiles-toyo			{.info-tiles-variant(@brand-toyo);}
+	&.tiles-alizarin		{.info-tiles-variant(@brand-alizarin);}
+	&.tiles-facebook		{.info-tiles-variant(@brand-facebook);}
+	&.tiles-twitter			{.info-tiles-variant(@brand-twitter);}
+	&.tiles-dribbble		{.info-tiles-variant(@brand-dribbble);}
+	&.tiles-vimeo			{.info-tiles-variant(@brand-vimeo);}
+}
+
+.shortcut-tiles {
+	&.tiles-info 			{.shortcut-tiles-variant(@brand-info);}
+	&.tiles-success 		{.shortcut-tiles-variant(@brand-success);}
+	&.tiles-danger 			{.shortcut-tiles-variant(@brand-danger);}
+	&.tiles-warning 		{.shortcut-tiles-variant(@brand-warning);}
+	&.tiles-primary 		{.shortcut-tiles-variant(@brand-primary);}
+	&.tiles-inverse 		{.shortcut-tiles-variant(@brand-inverse);}
+	&.tiles-midnightblue 	{.shortcut-tiles-variant(@brand-midnightblue)}
+	&.tiles-sky 			{.shortcut-tiles-variant(@brand-sky);}
+	&.tiles-orange 			{.shortcut-tiles-variant(@brand-orange)};
+	&.tiles-indigo 			{.shortcut-tiles-variant(@brand-indigo)};
+	&.tiles-green 			{.shortcut-tiles-variant(@brand-green);}
+	&.tiles-blue 			{.shortcut-tiles-variant(@brand-blue);}
+	&.tiles-magenta  		{.shortcut-tiles-variant(@brand-magenta);}
+	&.tiles-purple  		{.shortcut-tiles-variant(@brand-purple);}
+	&.tiles-brown  			{.shortcut-tiles-variant(@brand-brown);}
+	&.tiles-grape  			{.shortcut-tiles-variant(@brand-grape);}
+	&.tiles-toyo  			{.shortcut-tiles-variant(@brand-toyo);}
+	&.tiles-alizarin  		{.shortcut-tiles-variant(@brand-alizarin);}
+}
+
+
+// Sparkline Tiles
+
+.tiles-sparkline {
+	background: #fff;
+	border: 1px solid @border-darker;
+	border-radius: @border-radius-base;
+	position: relative;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.02);
+
+	.tiles-sparkline-heading {
+		padding: 20px 20px 0;
+		text-transform: uppercase;
+		h2 {
+			font-size: 36px;
+			margin: 0;
+			float: none;
+			line-height: 1em;
+
+		}
+		.tiles-sparkline-subheading {
+			margin: 5px 0 0;
+			float: none;
+			letter-spacing: 0.1em;
+			line-height: 1em;
+			color: @gray;
+			font-weight: 400;
+			font-size: @font-size-mini;
+		}
+		.label {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		.week {
+			position: absolute;
+			top: 48px;
+			float: none;
+			right: 20px;
+			text-transform: none !important;
+			color: @gray-light !important;
+			font-size: @font-size-mini;
+			i {font-size: 12px !important;}
+
+		}
+	}
+	.tiles-sparkline-body {
+		padding: 20px;
+
+		.tabular {
+			margin: 5px 0 0;
+			padding: 0 3px;
+			.tabular-cell {
+				width: 14.285714285714285714285714285714%;
+
+				.week-day {
+					color: @gray-light;
+					font-size: @font-size-mini;
+					position: relative;
+				}
+				.sun {margin-left: -2px; left: 0}
+				.mon {margin-left: -3px; left: 16.67%}
+				.tue {margin-left: -4px; left: 33.33%}
+				.wed {margin-left: -4px; left: 50%}
+				.thu {margin-left: -4px; left: 66.67%}
+				.fri {margin-left: -4px; left: 83.33%}
+				.sat {margin-left: -4px; left: 100%}
+			}
+		}
+
+	}
+	.tiles-sparkline-footer {
+		padding: 20px;
+		background: @tone-brighter;
+		font-size: @font-size-base;
+		border-top: 1px solid @border-lighter;
+		border-radius: 0 0 @border-radius-base @border-radius-base;
+	}
+}
+
+
+
+
+
+
+//Pie Chart with info
+
+.tile-piechart {
+	&:extend(.clearfix all);
+
+
+	.easypiechart {
+		float: left;
+		display: inline;
+		margin: 0;
+		height: 60px;
+		line-height: 60px;
+		.percent {
+			width: 60px;
+			font-weight: 400;
+			line-height: 60px;
+			font-size: 14px;
+		}
+	}
+	.tile-info {
+		float: left;
+		margin: 5px 10px 0;
+		label {
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			display: block;
+			margin-bottom: 5px;
+		}
+	}
+}
+
+
+//EasyPieChart in Tiles
+
+.info-tiles .tiles-body .easypiechart {
+	margin: 10px auto;
+	height: 80px;
+	line-height: 80px;
+	width: 80px;
+
+	.percent {
+		width: 80px;
+		line-height: 80px;
+		font-size: 20px;
+		font-weight: 300;
+		text-transform: uppercase;
+		color: #fff;
+	}
+}

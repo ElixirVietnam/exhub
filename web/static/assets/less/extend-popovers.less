@@ -1,0 +1,38 @@
+//popovers.less
+.popover {
+	.box-shadow(0 1px 10px rgba(0,0,0,.1));
+  padding: 0;
+}
+.popover-title {
+	padding: 8px 10px;
+	background-color: @tone-brighter;
+	border-radius: @border-radius-base @border-radius-base 0 0;
+  color: @gray;
+}
+.popover-content {
+	padding: 15px;
+}
+
+//tooltips
+.tooltip {
+	&.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
+  	&.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
+  	&.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
+  	&.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+  	&.top-left .tooltip-arrow, &.bottom-left .tooltip-arrow {
+  		left: @tooltip-arrow-width;
+  	}
+  	&.top-right .tooltip-arrow, &.bottom-right .tooltip-arrow {
+  		right: @tooltip-arrow-width;
+  	}
+}
+.tooltip-inner {
+	padding: 6px 10px;
+}
+
+
+//Modals
+.modal-title {
+  font-size: @font-size-h3;
+  font-weight: 300;
+}

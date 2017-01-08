@@ -1,0 +1,148 @@
+//
+// Timeline
+// --------------------------------------------------
+
+.timeline-month {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	width: 120px;
+	text-align: center;
+	position: relative;
+	left: 6%;
+	margin-left: -55px;
+	span {display: block;}
+	.month {font-size: @font-size-large; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase;}
+	.year {font-size: @font-size-base; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;}
+}
+
+.timeline {
+	.list-unstyled;
+	position: relative;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 10px;
+		bottom: 0;
+		width: 2px;
+		background: @border-lighter;
+		left: 6%;
+		margin-left: 2px;
+	}
+	> li {
+		position: relative;
+		.timeline-header {
+			&:extend(.clearfix all);
+			padding: 0;
+			color: @gray-light;
+
+			span.date {float: left; text-transform: uppercase; letter-spacing: 0.1em; font-size: @font-size-mini;}
+			span.author {float: right; font-size:12px; display: none;}
+		}
+
+		.timeline-header + p {padding-top: 10px;}
+
+		.timeline-icon {
+			width: 50px;
+			height: 50px;
+			font-size: 1.4em;
+			line-height: 50px;
+			-webkit-font-smoothing: antialiased;
+			position: absolute;
+			color: @gray;
+			background: @border-lighter;
+			border-radius: 50%;
+			text-align: center;
+			left: 6%;
+			top: 0;
+			margin: 0 0 0 -22px;
+			padding: 0;
+		}
+		.timeline-body {
+			margin: 0 0 20px 14%;
+			padding: 20px;
+			position: relative;
+			border-width: 2px;
+			border-style: solid;
+			border-radius: @border-radius-base;
+			background-color: #fff;
+			.timeline-content {
+				p {margin-bottom: 0;}
+				p + p {margin-top: 10px;}
+			}
+			&:after {
+				right: 100%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+				border-color: transparent;
+				border-width: 10px;
+				top: 15px;
+			}
+			img {margin: 5px 20px 0 0;}
+		}
+		.timeline-footer {
+			padding-top: 20px;
+			&:extend(.clearfix all);
+			color: #fff;
+		}
+	}
+}
+
+@media (max-width: @screen-sm-max) {
+
+	.timeline-month {
+		width: 100%;
+		text-align: center;
+		margin-left: 0;
+		left: 0;
+	}
+
+	.timeline:before {width: 0;left: 0;}
+	.timeline > li {
+		margin-top: 20px;
+		&:first-child {margin-top: 0;}
+
+		.timeline-body {
+			margin: 0 !important;
+			&:after {border-width: 0;}
+		}
+
+		.timeline-icon {
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 1em;
+			margin: 20px 50px 0 0;
+			position: relative;
+			float: right;
+		}
+	}
+}
+
+
+.timeline-primary 	{.timeline-states(@brand-primary);}
+.timeline-warning      {.timeline-states(@brand-warning);}
+.timeline-danger       {.timeline-states(@brand-danger);}
+.timeline-success      {.timeline-states(@brand-success);}
+.timeline-info         {.timeline-states(@brand-info);}
+.timeline-inverse      {.timeline-states(@brand-inverse);}
+
+// custom colors
+.timeline-brown        {.timeline-states(@brand-brown);}
+.timeline-indigo       {.timeline-states(@brand-indigo);}
+.timeline-orange       {.timeline-states(@brand-orange);}
+.timeline-sky          {.timeline-states(@brand-sky);}
+.timeline-midnightblue {.timeline-states(@brand-midnightblue);}
+.timeline-magenta      {.timeline-states(@brand-magenta);}
+.timeline-green        {.timeline-states(@brand-green);}
+.timeline-purple       {.timeline-states(@brand-purple);}
+
+
+.timeline-states(@timeline-color) {
+	.timeline-body 			{border-color: @timeline-color}
+	.timeline-body:after 	{border-right-color: @timeline-color !important;}
+	.timeline-time 			{color: @timeline-color}
+}

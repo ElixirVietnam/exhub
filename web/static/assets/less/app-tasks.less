@@ -1,0 +1,188 @@
+.card-task {
+	background: @tone-brighter;
+	.card-handle {
+		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTI4RkNENTNGQjk1MTFFMzg3OEFCQzkzOTY3RUY1NUYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTI4RkNENTRGQjk1MTFFMzg3OEFCQzkzOTY3RUY1NUYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1MjhGQ0Q1MUZCOTUxMUUzODc4QUJDOTM5NjdFRjU1RiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MjhGQ0Q1MkZCOTUxMUUzODc4QUJDOTM5NjdFRjU1RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu+Z9YEAAABuSURBVHjarM5BCoAwEEPRELp25f0P6VrECTIgYpV2UsiipTx+A7DiOkdsi+34Py22xJgPdCAJlZGEyohi6EAUQweiGDoQdD4MI1/QENKDhpE3aAp5QtPIHSohCZWRhMqIYuhAFGNBFEMHosspwAAkaTY7BBq//wAAAABJRU5ErkJggg==) repeat-x;
+		height: 4px;
+		width: 100%;
+
+		cursor: move;
+		cursor: -webkit-move;
+		cursor: -moz-move;
+	}
+
+	.card-title, .card-desc, .card-options {
+		padding: 10px 10px;
+		font-size: @font-size-small;
+	}
+
+	.card-title {
+		&:extend(.clearfix all);
+
+		h3 {
+			float: left;
+			margin: 0;
+			font-weight: bold;
+			font-size:@font-size-base;
+		}
+		.card-done {
+			float: right;
+			color: @gray;
+		}
+		h3, .card-done {}
+	}
+
+	.card-desc {
+		margin-bottom: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+
+	}
+
+	.card-options {
+		&:extend(.clearfix all);
+		.btn-group {margin-top: -1px;}
+	}
+
+	.card-checklist {
+		background: @tone-bright;
+		padding: 10px 10px 0;
+		border-bottom-right-radius: 1px;
+		border-bottom-left-radius: 1px;
+
+
+		h4 {
+			margin: 0;
+			float: left;
+		}
+		.checklist-toggler {
+			padding: 10px;
+			margin: -10px -10px 0;
+			&:extend(.clearfix all);
+			&:hover {cursor: pointer;}
+			h4, i {
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				font-weight: normal;
+				font-size:@font-size-mini;
+				color: @gray;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+			i {float: right;}
+			h4 {float: left;}
+		}
+
+		.checklist-container {
+			margin-top: 0px;
+			padding-bottom: 8px;
+			.checklist-item {
+				.checkbox-inline {padding-top: 0 !important;}
+			}
+			.dd-list {
+				.dd-handle {margin: 2px 0 !important}
+				.dd-placeholder {
+					border: 2px dashed @gray-light !important;
+					margin: 1px 0 !important;
+					&:first-child {margin: 2px 0 1px 0 !important}
+					&:last-child {margin: 1px 0 2px 0 !important}
+				}
+			}
+			.dd-list, .dd-list.dd-dragel:first-child {padding-top: 0;}
+
+		}
+
+
+
+
+	}
+
+	.progress {
+		margin: 0 10px 10px;
+	}
+
+
+
+
+	&.card-primary 	{.card-variant(@brand-primary);}
+	&.card-success 	{.card-variant(@brand-success);}
+	&.card-danger 	{.card-variant(@brand-danger);}
+	&.card-warning 	{.card-variant(@brand-warning);}
+	&.card-info 	{.card-variant(@brand-info);}
+	&.card-inverse 	{.card-variant(@brand-inverse);}
+	&.card-alizarin 	{.card-variant(@brand-alizarin);}
+	&.card-midnightblue 	{.card-variant(@brand-midnightblue);}
+	&.card-sky 	{.card-variant(@brand-sky);}
+	&.card-indigo 	{.card-variant(@brand-indigo);}
+}
+
+.dd-list, .dd-list.dd-dragel {
+	.checklist-item .dd-handle, .dd-item.checklist-item .dd-handle {
+		margin: 2px 0 !important;
+
+		border: none !important;
+		background: #fff !important;
+		.checkbox-inline {padding-top: 0 !important;}
+	}
+
+	.dd-item.checklist-item > button {float: right !important;}
+}
+
+.dd-list {
+	.checklist-item .dd-handle, .dd-item.checklist-item .dd-handle {
+		border: none !important;
+	}
+}
+
+.dd-list.dd-dragel {
+	.rotate(~"1deg");
+
+}
+
+
+.card-variant(@color) {
+	border-color: @color;
+	border-style: solid;
+	border-width: 2px 2px 2px;
+	border-radius: @border-radius-base;
+}
+
+.sortable-connected {
+	margin-bottom: 0;
+    .card-task + .card-task {margin-top: 20px;}
+
+    //.card-task.ui-sortable-helper + .card-task.ui-sortable-placeholder,
+    .card-task:first-child, .card-task.ui-sortable-helper:first-child + .card-task {margin-top: 0 !important;}
+
+    .ui-sortable-helper {
+    	.rotate(~"1deg");
+    	.opacity(0.8);
+    	cursor: move !important;
+    	z-index: 9999 !important;
+    	box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .ui-sortable-placeholder {
+
+    }
+}
+
+
+
+.ui-sortable-placeholder.card-task, .sortable-connected:empty {
+	.panel-placeholder();
+	margin-bottom: 0;
+	margin-top: 0;
+
+	visibility: visible !important;
+
+	min-height: 0px;
+}
+
+.sortable-connected:empty {
+	min-height: 40px;
+}
+
+
+@media (max-width: @screen-xs-max) {
+	.conditional-margin {margin-bottom: 20px;}
+}

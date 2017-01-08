@@ -1,0 +1,133 @@
+/*
+  Docs at http://http://simpleweatherjs.com
+  Weather icon font from http://fonts.artill.de/collection/artill-weather-icons
+*/
+
+/* Initialize Weather Font Icons by Artill
+*/
+@font-face {
+    font-family: 'weather';
+    src: url('../fonts/artill/artill_clean_icons-webfont.eot');
+    src: url('../fonts/artill/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/artill/artill_clean_icons-webfont.woff') format('woff'),
+         url('../fonts/artill/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('../fonts/artill/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i.ar {
+  font-family: weather;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+}
+
+.ar-0:before { content: ":"; }
+.ar-1:before { content: "p"; }
+.ar-2:before { content: "S"; }
+.ar-3:before { content: "Q"; }
+.ar-4:before { content: "S"; }
+.ar-5:before { content: "W"; }
+.ar-6:before { content: "W"; }
+.ar-7:before { content: "W"; }
+.ar-8:before { content: "W"; }
+.ar-9:before { content: "I"; }
+.ar-10:before { content: "W"; }
+.ar-11:before { content: "I"; }
+.ar-12:before { content: "I"; }
+.ar-13:before { content: "I"; }
+.ar-14:before { content: "I"; }
+.ar-15:before { content: "W"; }
+.ar-16:before { content: "I"; }
+.ar-17:before { content: "W"; }
+.ar-18:before { content: "U"; }
+.ar-19:before { content: "Z"; }
+.ar-20:before { content: "Z"; }
+.ar-21:before { content: "Z"; }
+.ar-22:before { content: "Z"; }
+.ar-23:before { content: "Z"; }
+.ar-24:before { content: "E"; }
+.ar-25:before { content: "E"; }
+.ar-26:before { content: "3"; }
+.ar-27:before { content: "a"; }
+.ar-28:before { content: "A"; }
+.ar-29:before { content: "a"; }
+.ar-30:before { content: "A"; }
+.ar-31:before { content: "6"; }
+.ar-32:before { content: "1"; }
+.ar-33:before { content: "6"; }
+.ar-34:before { content: "1"; }
+.ar-35:before { content: "W"; }
+.ar-36:before { content: "1"; }
+.ar-37:before { content: "S"; }
+.ar-38:before { content: "S"; }
+.ar-39:before { content: "S"; }
+.ar-40:before { content: "M"; }
+.ar-41:before { content: "W"; }
+.ar-42:before { content: "I"; }
+.ar-43:before { content: "W"; }
+.ar-44:before { content: "a"; }
+.ar-45:before { content: "S"; }
+.ar-46:before { content: "U"; }
+.ar-47:before { content: "S"; }
+
+/* Widget Style*/
+
+.weather-container {
+	margin: 0 auto;
+
+	.weather-widget {
+	  border-radius: @border-radius-base;
+	  background: @brand-midnightblue;
+	  margin: 0px auto;
+	  padding: 20px;
+	  border: 0px solid @border-darker;
+	  text-align: center;
+	  text-transform: uppercase;
+	  margin-bottom: 20px;
+		h2 {
+		  margin: 0 0 20px;
+		  font-size: 36px;
+		  font-weight: 300;
+		  text-align: center;
+		  color: #fff;
+		  line-height: 1em;
+		}
+
+		ul {
+		  display: inline-block;
+		  margin: 0;
+		  padding: 0;
+		}
+
+		li {
+		  padding: 10px 20px;
+		  display: inline-block;
+		  border-radius: @border-radius-base;
+		  background: rgba(255, 255, 255, 0.2);
+		  letter-spacing: 0.1em;
+		  color: #fff;
+		  font-size: @font-size-mini;
+		  text-transform: uppercase;
+		  margin: 1px 0;
+		  margin-left: 10px;
+		}
+
+		.currently {
+		}
+	}
+
+}
+
+
+// On Rightbar
+
+.infobar .weather-container {
+	margin: 20px auto;
+	.weather-widget ul li {
+		width: 100%;
+		margin-left: 0px;
+	}
+
+}

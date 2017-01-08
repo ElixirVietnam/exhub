@@ -1,0 +1,68 @@
+// Grape: Sidebar
+	@sidebar-grape-divider:                     darken(@brand-grape, 5%);
+	@sidebar-grape-static-width: 				260px;
+
+	@sidebar-grape-background:					@brand-grape;
+	@sidebar-grape-color: 						lighten(@brand-grape, 20%);
+	@sidebar-grape-menu-color: 					lighten(@brand-grape, 30%);
+	@sidebar-grape-icon-color: 					@sidebar-grape-menu-color;
+
+	@sidebar-grape-active-bg:					lighten(@brand-grape, 15%);
+	@sidebar-grape-active-color:				#fff;
+
+	@sidebar-grape-hover-bg: 					lighten(@brand-grape, 1.5%);
+	@sidebar-grape-hover-color:                 lighten(@brand-grape, 45%);
+
+	@sidebar-grape-submenu-bg: 					saturate(darken(@brand-grape, 9%), 1.5%);
+	@sidebar-grape-submenu-hover-bg: 			darken(@sidebar-grape-submenu-bg, 4%);
+	@sidebar-grape-submenu-color:               lighten(@sidebar-grape-submenu-bg, 32.5%);
+
+	@sidebar-grape-disabled-color: 				desaturate(lighten(@brand-grape, 12.5%), 1.5%);
+
+	@search-grape-bg:							@sidebar-grape-background;
+	@search-grape-color:                        lighten(@brand-grape, 20%);
+
+	@sidebar-grape-border-top:					lighten(@brand-grape, 2.5%);
+	@sidebar-grape-submenu-open: 				#fff;
+
+// Grape: Horizontal Nav
+
+	@horizontal-grape-background:     					@sidebar-grape-background;
+	@horizontal-grape-menu-color: 						@sidebar-grape-menu-color;
+	@horizontal-grape-icon-color: 						@horizontal-grape-menu-color;
+
+	@horizontal-grape-active-bg:  						@sidebar-grape-active-bg;
+	@horizontal-grape-active-color:  					@sidebar-grape-active-color;
+
+	@horizontal-grape-hover-bg: 						@sidebar-grape-hover-bg;
+	@horizontal-grape-hover-color: 						@sidebar-grape-hover-color;
+
+	@horizontal-grape-submenu-background: 				@sidebar-grape-submenu-bg;
+	@horizontal-grape-submenu-item-color: 				@sidebar-grape-submenu-color;
+	@horizontal-grape-submenu-item-hover-background: 	@sidebar-grape-hover-bg;
+	@horizontal-grape-submenu-item-hover-color: 		@sidebar-grape-hover-color;
+
+
+// Grape: Topnav
+
+	@topnav-grape-color: lighten(@topnav-grape-bg-color, 20%);
+	@topnav-grape-bg-color: @brand-grape;
+	@topnav-grape-border-color: darken(@topnav-grape-bg-color, 15%);
+
+	@topnav-grape-brand-color: lighten(@topnav-grape-bg-color, 27.5%);
+	@topnav-grape-brand-hover-color: lighten(@topnav-grape-bg-color, 45%);
+	@topnav-grape-brand-hover-bg: transparent;
+
+	@topnav-grape-link-color: lighten(@topnav-grape-bg-color, 32.5%);
+	@topnav-grape-link-hover-color: lighten(@topnav-grape-bg-color, 45%);
+	@topnav-grape-link-hover-bg: darken(@topnav-grape-bg-color, 10%);
+	@topnav-grape-link-active-color: lighten(@topnav-grape-bg-color, 45%);
+	@topnav-grape-link-active-bg: darken(@topnav-grape-bg-color, 14%);
+	@topnav-grape-link-disabled-color: lighten(@topnav-grape-bg-color, 10%);
+	@topnav-grape-link-disabled-bg: transparent;
+
+	@topnav-grape-dropdown-bg: @topnav-grape-link-active-bg;
+	@topnav-grape-dropdown-color: lighten(@topnav-grape-dropdown-bg, 35%);
+	@topnav-grape-dropdown-link-color: lighten(@topnav-grape-dropdown-bg, 35%);
+	@topnav-grape-dropdown-link-hover-color: lighten(@topnav-grape-dropdown-bg, 55%);
+	@topnav-grape-dropdown-link-hover-bg: darken(@topnav-grape-link-hover-bg, 6.75%);

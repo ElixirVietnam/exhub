@@ -1,0 +1,152 @@
+// Only Pricing Table 1 is converted to Less so far
+
+.pricing-table-1-container {
+	.pricing-box {
+		position: relative;
+		margin-bottom: 20px;
+		border: 2px solid @border-darker;
+		border-radius: @border-radius-base;
+		transition: all 0.25s ease 0s;
+		-moz-transition: all 0.25s ease 0s;
+		-webkit-transition: all 0.25s ease 0s;
+		-o-transition: all 0.25s ease 0s;
+
+		.pricing-head {
+			text-align: center;
+			h3, h4 {
+				&.pricing-head-title {
+					text-transform: uppercase;
+					letter-spacing: 0.1em;
+					font-size: @font-size-base;
+					font-weight: 400;
+					margin: -2px -2px 0;
+					padding: 11px 0;
+					border-radius: @border-radius-base @border-radius-base 0 0;
+				}
+				margin: 0;
+				line-height: normal;
+				span {
+					display: block;
+					margin-top: 5px;
+					font-size: @font-size-mini;
+					font-style: italic;
+				}
+			}
+			h3 {
+				font-weight: 300;
+				color: #fff;
+				padding: 10px 0;
+			}
+			h4 {
+				color: @gray-dark;
+				padding: 10px 0;
+				font-size: 56px;
+				font-weight: 400;
+				background-color: rgba(0, 0, 0, 0.015);
+				border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+				i {
+					top: -16px;
+					font-weight: 300;
+					font-size: 28px;
+					font-style: normal;
+					position: relative;
+				}
+				span {
+					top: -10px;
+					font-size: @font-size-mini;
+					font-style: normal;
+					font-weight: 400;
+					position: relative;
+				}
+			}
+		}
+		&:hover {
+			transition: all 0.25s ease 0s;
+			-moz-transition: all 0.25s ease 0s;
+			-webkit-transition: all 0.25s ease 0s;
+			-o-transition: all 0.25s ease 0s;
+			z-index: 9;
+		}
+		.pricing-footer {
+			color: @gray-light;
+			font-size: @font-size-mini;
+			text-align: center;
+			padding: 20px;
+			p {margin-bottom: 20px;}
+			background-color: rgba(0, 0, 0, 0.015)
+		}
+		&.pricing-active {
+			transition: all 0.25s ease 0s;
+			-moz-transition: all 0.25s ease 0s;
+			-webkit-transition: all 0.25s ease 0s;
+			-o-transition: all 0.25s ease 0s;
+		}
+
+		.pricing-content {
+			margin-bottom: 0;
+
+			li {
+				color: @gray;
+				font-size: @font-size-base;
+				text-align: center;
+				padding: 10px 15px;
+				border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+				i {
+					color: @gray-light;
+					margin-right: 5px;
+				}
+				&:hover {
+					//color: @gray-dark;
+				}
+			}
+		}
+	}
+}
+
+
+.pricing-table-1-container {
+	&.pricing-info 			{.pricing-variant-1(@brand-info);}
+	&.pricing-success 		{.pricing-variant-1(@brand-success);}
+	&.pricing-danger 		{.pricing-variant-1(@brand-danger);}
+	&.pricing-warning 		{.pricing-variant-1(@brand-warning);}
+	&.pricing-primary 		{.pricing-variant-1(@brand-primary);}
+	&.pricing-inverse 		{.pricing-variant-1(@brand-inverse);}
+
+	&.pricing-midnightblue 	{.pricing-variant-1(@brand-midnightblue)}
+	&.pricing-sky 			{.pricing-variant-1(@brand-sky);}
+	&.pricing-orange 		{.pricing-variant-1(@brand-orange)};
+	&.pricing-indigo 		{.pricing-variant-1(@brand-indigo)};
+	&.pricing-green 		{.pricing-variant-1(@brand-green);}
+	&.pricing-magenta  		{.pricing-variant-1(@brand-magenta);}
+	&.pricing-purple  		{.pricing-variant-1(@brand-purple);}
+	&.pricing-brown  		{.pricing-variant-1(@brand-brown);}
+	&.pricing-grape			{.pricing-variant-1(@brand-grape);}
+
+	&.pricing-toyo			{.pricing-variant-1(@brand-toyo);}
+	&.pricing-alizarin		{.pricing-variant-1(@brand-alizarin);}
+
+}
+
+
+.pricing-variant-1(@color-variant) {
+	.pricing-box {
+		h3 {
+			background: @color-variant;
+		}
+
+		&:hover {
+			border: 2px solid @color-variant;
+			h4 {
+				color: @color-variant;
+			}
+		}
+		&.pricing-active {
+			border: 2px solid @color-variant;
+			.pricing-head h4 {
+				color: @color-variant;
+				background: rgba(red(@color-variant), green(@color-variant), blue(@color-variant), 0.03);
+				border-bottom: 1px dashed rgba(red(@color-variant), green(@color-variant), blue(@color-variant), 0.09);
+			}
+		}
+	}
+}

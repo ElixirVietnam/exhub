@@ -2,6 +2,7 @@
 /_build
 /db
 /deps
+/node_modules
 /*.ez
 
 # Generated on crash by the VM
