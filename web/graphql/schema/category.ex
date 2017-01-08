@@ -4,6 +4,7 @@ defmodule ExHub.Graphql.Schema.CategorySchema do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation
   use Absinthe.Ecto, repo: ExHub.Repo
+  use ExHub.Graphql.Ecto
   alias ExHub.{Category, Repo}
 
   connection node_type: :category
@@ -18,7 +19,7 @@ defmodule ExHub.Graphql.Schema.CategorySchema do
     be loaded.
     """
     connection field :newest_posts, node_type: :post do
-      resolve list(&Category.newest_posts_query/1)
+      resolve list(&Category.newest_posts_query/3)
     end
 
     @desc """
@@ -26,8 +27,8 @@ defmodule ExHub.Graphql.Schema.CategorySchema do
 
     This API, posts will be sorted by score
     """
-    connection field :popular_posts, node_type: :post do
-      resolve list(&Category.most_popular_posts_query/1)
+    connection field :most_popular_posts, node_type: :post do
+      resolve list(&Category.most_popular_posts_query/3)
     end
   end
 
@@ -36,7 +37,7 @@ defmodule ExHub.Graphql.Schema.CategorySchema do
     List all categories
     """
     connection field :categories, node_type: :category do
-      resolve list(&Category.all_query/1)
+      resolve list(&Category.all_query/3)
     end
 
     @desc """
@@ -49,10 +50,12 @@ defmodule ExHub.Graphql.Schema.CategorySchema do
       arg :name, non_null(:string)
 
       resolve fn _, %{name: name}, _ ->
-        case Repo.get_by(Category, name: name) do
-          nil -> {:error, "category name not found"}
-          category -> {:ok, category}
-        end
+        batch({Category, :find_by_name}, name, fn batch_result ->
+          case batch_result[name] do
+            nil -> {:error, "category name not found"}
+            category -> {:ok, category}
+          end
+        end)
       end
     end
   end

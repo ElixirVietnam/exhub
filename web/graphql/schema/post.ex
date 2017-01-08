@@ -4,12 +4,14 @@ defmodule ExHub.Graphql.Schema.PostSchema do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation
   use Absinthe.Ecto, repo: ExHub.Repo
+  use ExHub.Graphql.Ecto
   alias ExHub.Graphql.Resolver
   alias ExHub.Post
 
   connection node_type: :post
 
   object :post do
+    field :id, :id
     field :content, :string
     field :title, :string
     field :link, :string
@@ -20,16 +22,29 @@ defmodule ExHub.Graphql.Schema.PostSchema do
 
     field :user, :user, resolve: assoc(:user)
     field :category, :category, resolve: assoc(:category)
-    field :tags, list_of(:tag), resolve: assoc(:tags)
 
     @desc """
-    List all the comment which is belong to current user
+    List all the tags which is belong to current post
+    """
+    field :tags, list_of(:tag) do
+      resolve fn post, _, _ ->
+        batch({Post, :find_tags_by_ids}, post.id, fn batch_result ->
+          case batch_result[post.id] do
+            nil -> {:ok, []}
+            tags-> {:ok, tags}
+          end
+        end)
+      end
+    end
+
+    @desc """
+    List all the comments which is belong to current post
 
     Currenlty, we only want to sort these comments by time.
     New comments will be load first, old comments are load later
     """
     connection field :comments, node_type: :comment do
-      resolve list(&Post.comments_query/1)
+      resolve list(&Post.comments_query/3)
     end
   end
 
@@ -42,6 +57,15 @@ defmodule ExHub.Graphql.Schema.PostSchema do
       + `id` - post id
       """
       arg :id, non_null(:string)
+
+      resolve fn _, %{id: id}, _ ->
+        batch({Post, :find_by_ids}, id, fn batch_result ->
+          case batch_result[id] do
+            nil -> {:error, "post id not found"}
+            post -> {:ok, post}
+          end
+        end)
+      end
     end
   end
 

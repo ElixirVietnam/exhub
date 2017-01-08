@@ -21,13 +21,13 @@ defmodule ExHub.Notification do
     |> Ecto.Changeset.change(user_id: user.id)
   end
 
-  def all_query(user) do
+  def all_query(user, _, _) do
     from n in __MODULE__,
       where: n.user_id == ^user.id,
       order_by: [desc: n.updated_at]
   end
 
-  def unseen_query(user) do
+  def unseen_query(user, _, _) do
     from n in __MODULE__,
       where: n.user_id == ^user.id and n.is_seen == false,
       order_by: [desc: n.updated_at]

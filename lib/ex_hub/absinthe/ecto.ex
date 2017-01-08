@@ -1,6 +1,8 @@
 defmodule Absinthe.Ecto do
   @moduledoc """
-  NOTE: This code borrows many from absinthe_ecto
+  NOTE: This code borrows from absinthe_ecto. There are some PRs does not
+  merge into absinthe_ecto, but since I want to do it, I make this file to
+  use theses batch.
 
   Provides some helper functions for easy batching of ecto assocations
   These functions all make use of the batch plugin found in Absinthe, they're
@@ -49,7 +51,6 @@ defmodule Absinthe.Ecto do
   """
   import Ecto.Query
   import Absinthe.Resolution.Helpers
-  alias Absinthe.Relay
 
   # MACROS
 
@@ -57,33 +58,8 @@ defmodule Absinthe.Ecto do
     quote do
       import unquote(__MODULE__), only: [
         assoc: 1,
-        list: 1,
       ]
       @__absinthe_ecto_repo__ unquote(repo)
-    end
-  end
-
-  @doc """
-  Resolution for list of object to support Relay.
-  This function is resolve by using async function of Absinthe
-
-  Example:
-
-      ```elixir
-      # schema.ex
-      connection field :teams, node_type: :team, resolve: list(&Company.team_query/1)
-
-      # model.ex
-      def teams_query(company) do
-        from t in Team,
-          where: t.company_id == ^company.id and t.is_active == true,
-          order_by: [asc: t.inserted_at]
-      end
-      ```
-  """
-  defmacro list(query) do
-    quote do
-      unquote(__MODULE__).list(@__absinthe_ecto_repo__, unquote(query))
     end
   end
 
@@ -101,40 +77,6 @@ defmodule Absinthe.Ecto do
   end
 
   # FUNCTIONS
-
-  @doc """
-  Generally you would use the `list/1` macro.
-  However, this can be useful if you need to specify an ecto repo.
-
-  Resolution for list of object to support Relay.
-  This function is resolve by using async function of Absinthe
-
-  Example:
-
-      ```elixir
-      # schema.ex
-      connection field :teams, node_type: :team, resolve: list(&Company.team_query/1)
-
-      # model.ex
-      def teams_query(company) do
-        from t in Team,
-          where: t.company_id == ^company.id and t.is_active == true,
-          order_by: [asc: t.inserted_at]
-      end
-      ```
-  """
-  def list(repo, query_func) do
-    fn parent, args, _ ->
-      async(fn ->
-        result =
-          parent
-          |> query_func.()
-          |> Relay.Connection.from_query(&repo.all/1, args)
-        {:ok, result}
-      end)
-    end
-  end
-
   @doc """
   Generally you would use the `assoc/1` macro.
   However, this can be useful if you need to specify an ecto repo.

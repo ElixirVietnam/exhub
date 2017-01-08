@@ -1,5 +1,15 @@
 defmodule ExHub.Graphql.Resolver do
-  @moduledoc false
+  @moduledoc """
+  This module provide some high order function to resolver.
+  In particular, these function will help authorization easier
+
+  It provides 3 functions
+
+  + `permission/1`
+  + `permission/2`
+  + `is_authenticated/1`
+
+  """
 
   import ExHub.Gettext
   alias ExHub.Graphql.Permission

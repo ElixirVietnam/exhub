@@ -4,6 +4,7 @@ defmodule ExHub.Graphql.Schema.UserSchema do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation
   use Absinthe.Ecto, repo: ExHub.Repo
+  use ExHub.Graphql.Ecto
   alias ExHub.Graphql.Resolver
   alias ExHub.{Notification, Repo}
 
@@ -17,7 +18,7 @@ defmodule ExHub.Graphql.Schema.UserSchema do
     Get all notifications of user.
     """
     connection field :notifications, node_type: :notification do
-      resolve list(&Notification.all_query/1)
+      resolve list(&Notification.all_query/3)
               |> Resolver.is_authenticated
     end
 
@@ -26,10 +27,10 @@ defmodule ExHub.Graphql.Schema.UserSchema do
     all notification, `notification_unseen_count` will be reset to 0
     """
     field :notification_unseen_count, :integer do
-      resolve (fn user, _, _ ->
+      resolve (fn user, args, info ->
         count =
           user
-          |> Notification.unseen_query
+          |> Notification.unseen_query(args, info)
           |> Repo.aggregate(:count, :id)
         {:ok, count}
       end)

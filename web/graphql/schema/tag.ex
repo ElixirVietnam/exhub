@@ -4,6 +4,8 @@ defmodule ExHub.Graphql.Schema.TagSchema do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation
   use Absinthe.Ecto, repo: ExHub.Repo
+  use ExHub.Graphql.Ecto
+  import Absinthe.Resolution.Helpers
   alias ExHub.{Tag, Repo}
 
   connection node_type: :tag
@@ -18,7 +20,7 @@ defmodule ExHub.Graphql.Schema.TagSchema do
     be loaded.
     """
     connection field :newest_posts, node_type: :post do
-      resolve list(&Tag.newest_posts_query/1)
+      resolve list(&Tag.newest_posts_query/3)
     end
 
     @desc """
@@ -27,7 +29,7 @@ defmodule ExHub.Graphql.Schema.TagSchema do
     This API, posts will be sorted by score
     """
     connection field :most_popular_posts, node_type: :post do
-      resolve list(&Tag.most_popular_posts_query/1)
+      resolve list(&Tag.most_popular_posts_query/3)
     end
   end
 
@@ -36,7 +38,7 @@ defmodule ExHub.Graphql.Schema.TagSchema do
     Get all the tags
     """
     connection field :tags, node_type: :tag do
-      resolve list(&Tag.all_query/1)
+      resolve list(&Tag.all_query/3)
     end
 
     @desc """
@@ -48,11 +50,12 @@ defmodule ExHub.Graphql.Schema.TagSchema do
       """
       arg :name, non_null(:string)
       resolve fn _, %{name: name}, _ ->
-        # TODO: this should be done in batch
-        case Repo.get_by(Tag, name: name) do
-          nil -> {:error, "tag name not found"}
-          tag -> {:ok, tag}
-        end
+        batch({Tag, :find_by_name}, name, fn batch_result ->
+          case batch_result[name] do
+            nil -> {:error, "tag name not found"}
+            tag -> {:ok, tag}
+          end
+        end)
       end
     end
   end
