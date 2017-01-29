@@ -7,7 +7,7 @@ import DevTools from './DevTools';
 
 const Root = ({ store, history }) => (
   <Provider store={store}>
-    <div style={{ height: '100%' }}>
+    <div>
       <Router
         history={history}
         routes={routes}

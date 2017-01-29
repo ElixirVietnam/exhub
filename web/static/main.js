@@ -1,6 +1,6 @@
 import 'font-awesome-webpack';
 import 'assets/less/template.less';
-import 'assets/scss/style.scss';
+import 'assets/scss/style.less';
 
 // alertifyjs
 import 'alertifyjs/build/css/themes/default.css';

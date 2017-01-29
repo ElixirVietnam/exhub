@@ -52,6 +52,7 @@
     "react-dom": "^0.14.0",
     "react-mixin": "^3.0.0",
     "react-redux": "^4.0.0",
+    "react-remarkable": "1.1.1",
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.5",
     "react-spinkit": "^1.1.4",
@@ -64,6 +65,7 @@
     "redux-form": "3.0.10",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "^1.0.0",
+    "remarkable": "1.7.1",
     "reqwest": "^2.0.1",
     "reqwest-without-xhr2": "^2.0.2",
     "superagent": "^1.4.0"
