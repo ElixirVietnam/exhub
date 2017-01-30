@@ -8,7 +8,7 @@ defmodule ExHub.Endpoint do
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :ex_hub, gzip: false,
+    at: "/assets", from: :ex_hub, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the

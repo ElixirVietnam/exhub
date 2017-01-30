@@ -26,7 +26,7 @@ class Editor extends Component {
       <div className="panel">
   			<div className="panel-heading">
   				<h2>{this.props.title}</h2>
-          <div class="options">
+          <div className="options">
             <ul className="nav nav-tabs">
               <li className="active"><a href="#write" data-toggle="tab">Write</a></li>
               <li>
@@ -40,13 +40,16 @@ class Editor extends Component {
             <div className="tab-pane active" id="write">
               <textarea
                   placeholder="Your thought in markdown format..."
-                  style={{resize: "vertical", width: "100%", height: "300px"}}
+                  style={{resize: "vertical", width: "100%", height: "200px"}}
                   ref="content">
               </textarea>
             </div>
-            <div className="tab-pane" id="preview" style={{minHeight: "300px"}}>
+            <div className="tab-pane" id="preview" style={{minHeight: "200px"}}>
               <Markdown source={content} />
             </div>
+          </div>
+          <div className="row mt15 ml10">
+            <button className="pull-left btn-primary btn">Reply</button>
           </div>
         </div>
       </div>

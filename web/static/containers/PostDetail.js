@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Header from '../components/Common/Header';
-import TagCloud from '../components/Common/TagCloud';
+import PostItem from '../components/Post/PostItem';
 import Editor from '../components/Common/Editor';
 
 
@@ -16,17 +15,8 @@ class PostDetail extends Component {
     return (
       <div className="panel panel-default topic">
         <div className="panel-body">
-          <h1>{this.props.post.title}</h1>
-          <div className="featured-footer">
-    				<div className="post-info-container">
-    					<ul className="post-info list-unstlyed list-inline">
-    						<li><i className="fa fa-user"></i>by <a href="">{this.props.post.author}</a></li>
-    						<li><i className="fa fa-clock-o"></i>{this.props.post.createdAt}</li>
-    						<li><i className="fa fa-comment-o"></i><a href="">{this.props.post.commentsCount} comments</a></li>
-    					</ul>
-    				</div>
-    			</div>
-          <div className="markdown-text">
+          <PostItem {...this.props.post} />
+          <div className="markdown-text mt20">
             Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
             Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
             Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
@@ -112,7 +102,7 @@ function mapStateToProps(state) {
     post:  {
       id: 1,
       author: "kiennt",
-      title: "Elixir 1.4 is released",
+      title: "Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. ",
       imageURL: "https://ph-files.imgix.net/ccdab0a7-678c-41bc-9e00-057714fa97ab?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
       content: "",
       createdAt: "2017-01-01 20:22",

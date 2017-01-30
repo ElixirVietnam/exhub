@@ -14,7 +14,7 @@ class App extends Component {
   renderContent() {
     return (
       <div className="page-content" style={{paddingTop: "100px"}}>
-        <div className="container" style={{paddingTop: "50px"}}>
+        <div className="container" style={{paddingTop: "20px"}}>
         	<div className="row blog">
             {this.props.children}
         		<div className="col-md-3 hidden-xs">

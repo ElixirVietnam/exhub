@@ -13,6 +13,7 @@ class PostItem extends Component {
           </div>
           <div className="post-content">
             <span className="post-title">{this.props.title}</span>
+            <span className="post-description">{this.props.createdAt}</span>
           </div>
         </Link>
         <div className="post-meta">
