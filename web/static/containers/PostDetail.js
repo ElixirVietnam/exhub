@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Markdown from 'react-remarkable';
 
 import PostItem from '../components/Post/PostItem';
 import Editor from '../components/Common/Editor';
@@ -17,30 +18,7 @@ class PostDetail extends Component {
         <div className="panel-body">
           <PostItem {...this.props.post} />
           <div className="markdown-text mt20">
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
-            Big fan of Sketch here, but seriously folks - we're not gonna hunt every new software release that has 'Touchbar integration', are we? Or every new release of Sketch for that matter.
+            <Markdown source={this.props.post.content} />
           </div>
         </div>
       </div>
@@ -54,18 +32,18 @@ class PostDetail extends Component {
         <div className="panel panel-body">
           <ul className="media-list comments">
             {
-              [1, 2, 3, 4].map(() => {
+              this.props.post.comments.map((comment) => {
                 return (
                   <li className="media">
-                    <a href="/users/327" className="pull-left">
-                      <img src="https://cdn.v2ex.com/gravatar/a7f7c88fa402d2bc3facb23e138bc163" height="48" width="48" className="img-rounded" />
+                    <a href="#" className="pull-left">
+                      <img src={comment.user.imageURL} height="48" width="48" className="img-rounded" />
                     </a>
                     <div className="media-body">
-                      <h5 className="media-heading"><a href="#" className="person">Jeremy Potter</a></h5>
+                      <h5 className="media-heading"><a href="#" className="person">{comment.user.name}</a></h5>
                       <p>
-                        that sounds good to me
+                        <Markdown source={comment.content} />
                       </p>
-                      <p><small className="time">5 days ago</small></p>
+                      <p><small className="time">{comment.createdAt}</small></p>
                     </div>
                   </li>
                 );
@@ -104,11 +82,84 @@ function mapStateToProps(state) {
       author: "kiennt",
       title: "Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. ",
       imageURL: "https://ph-files.imgix.net/ccdab0a7-678c-41bc-9e00-057714fa97ab?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
-      content: "",
+      content: `# This is h1
+### what do you think
+
+\`\`\`python
+def function(param, *args):
+  return
+\`\`\`
+
+[link](http://exhub.com)`,
       createdAt: "2017-01-01 20:22",
       likesCount: 30,
       commentsCount: 100,
-      tags: ["elixir", "hardcore"]
+      tags: ["elixir", "hardcore"],
+      comments: [{
+        user: {
+          name: "kiennt",
+          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
+        },
+        content: `## First
+I believe this should be render to markdown
+## Second
+## Third
+
+And here is a list
+
++ one
++ two
++ three`,
+        createdAt: "2017-01-01 12:00"
+      }, {
+        user: {
+          name: "kiennt",
+          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
+        },
+        content: `## First
+I believe this should be render to markdown
+## Second
+## Third
+
+And here is a list
+
++ one
++ two
++ three`,
+        createdAt: "2017-01-01 12:00"
+      }, {
+        user: {
+          name: "kiennt",
+          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
+        },
+        content: `## First
+I believe this should be render to markdown
+## Second
+## Third
+
+And here is a list
+
++ one
++ two
++ three`,
+        createdAt: "2017-01-01 12:00"
+      }, {
+        user: {
+          name: "kiennt",
+          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
+        },
+        content: `## First
+I believe this should be render to markdown
+## Second
+## Third
+
+And here is a list
+
++ one
++ two
++ three`,
+        createdAt: "2017-01-01 12:00"
+      }]
     }
   };
 }
