@@ -9,6 +9,7 @@ class Header extends Component {
       <ul className="nav navbar-nav toolbar pull-left">
         <li>
           <Link to="/" className="username">
+            <span className="hidden-xs">ExHub</span>
             <img className="img-circle" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="Exhub" />
           </Link>
         </li>
@@ -31,20 +32,30 @@ class Header extends Component {
       <li className="dropdown toolbar-icon-bg">
         <a href="#" className="hasnotifications dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <span className="icon-bg"><i className="fa fa-fw fa-bell"></i></span>
-          <span className="badge badge-alizarin">5</span>
+          {
+            this.props.user.notificationUnseenCount > 0
+            ? <span className="badge badge-alizarin">{this.props.user.notificationUnseenCount}</span>
+            : null
+          }
         </a>
         <div className="dropdown-menu notifications arrow">
           <div className="dd-header">
             <span>Notifications</span>
           </div>
           <ul className="scrollthis">
-            <li>
-              <a href="#" className="notification-success">
-                <div className="notification-icon"><i className="fa fa-check fa-fw"></i></div>
-                <div className="notification-content"><strong>Lorem ipsum</strong> dolor sit amet consectetur adipisicing elit!</div>
-                <div className="notification-time">40m</div>
-              </a>
-            </li>
+            {
+              this.props.user.notifications.edges.map(({ node }) => {
+                return (
+                  <li key={node.id}>
+                    <a href="{node.link}" className="notification-success">
+                      <div className="notification-icon"><i className="fa fa-check fa-fw"></i></div>
+                      <div className="notification-content">{node.content}</div>
+                      <div className="notification-time">{node.updatedAt}</div>
+                    </a>
+                  </li>
+                );
+              })
+            }
           </ul>
           <div className="dd-footer">
             <a href="#">View all notifications</a>
@@ -58,8 +69,7 @@ class Header extends Component {
     return (
       <li className="dropdown">
         <a href="#" className="dropdown-toggle username" data-toggle="dropdown">
-          <span className="hidden-xs">Kien Nguyen</span>
-          <img className="img-circle" src="https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400" alt="Dangerfield" />
+          <img className="img-circle" src={this.props.user.imageUrl} />
         </a>
         <ul className="dropdown-menu userinfo">
           <li className="divider"></li>
@@ -69,28 +79,84 @@ class Header extends Component {
     );
   }
 
+  renderLoginButton() {
+    return (
+      <li className="toolbar-icon-bg">
+        <a href="/auth/github">
+          <span className="icon-bg"><i className="fa fa-fw fa-sign-in"></i></span>
+        </a>
+      </li>
+    );
+  }
+
+  renderHeader() {
+    const { user } = this.props;
+    if (!user) {
+      return (
+        <ul className="nav navbar-nav toolbar pull-right">
+          {this.renderLoginButton()}
+        </ul>
+      );
+    }
+
+    return (
+      <ul className="nav navbar-nav toolbar pull-right">
+        {this.renderAddPostButton()}
+        {this.renderNotificationButton()}
+        {this.renderAvatarButton()}
+      </ul>
+    );
+  }
+
   render() {
     return  (
       <header id="topnav" className="navbar navbar-default navbar-fixed-top clearfix" role="banner">
         <div className="container">
           <div className="row">
             {this.renderLogo()}
-            <ul className="nav navbar-nav toolbar pull-right">
-              {this.renderAddPostButton()}
-              {this.renderNotificationButton()}
-              {this.renderAvatarButton()}
+            {this.renderHeader()}
+            <ul className="nav navbar-nav toolbar pull-left">
+            {
+              this.props.categories.edges.map(({ node }) => {
+                return (
+                  <li key={node.name}><Link to={`/categories/${node.name}`}><span>{node.name}</span></Link></li>
+                );
+              })
+            }
             </ul>
           </div>
-          <div style={{borderBottom: "1px solid #e6eaed"}}></div>
-          <ul className="nav navbar-nav toolbar pull-left">
-            <li><Link to="/"><span>Home</span></Link></li>
-            <li><Link to="/posts"><span>Post</span></Link></li>
-            <li><Link to="/jobs"><span>Jobs</span></Link></li>
-          </ul>
         </div>
       </header>
     );
   }
 }
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    categories: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        node: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+        }),
+      })),
+    }),
+  }),
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    notificationUnseenCount: PropTypes.number.isRequired,
+    notifications: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        node: PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          link: PropTypes.string.isRequired,
+          isSeen: PropTypes.string.isRequire,
+          content: PropTypes.string.isRequired,
+          updatedAt: PropTypes.string.isRequired,
+        }),
+      })),
+    }),
+  })
+};
 
 export default Header;

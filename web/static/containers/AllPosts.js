@@ -42,11 +42,6 @@ AllPosts.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const {
-    auth,
-    entities: { users },
-  } = state;
-
   return {
     posts:  [{
       id: 1,

@@ -23,6 +23,7 @@
   "dependencies": {
     "alertifyjs": "^1.5.0",
     "alt": "^0.17.4",
+    "apollo-client": "0.8.1",
     "bootstrap": "^3.3.7",
     "bootstrap-daterangepicker": "2.1.19",
     "bootstrap-sass": "^3.3.5",
@@ -36,6 +37,7 @@
     "font-awesome-webpack": "0.0.4",
     "formsy-react": "^0.17.0",
     "formsy-react-components": "^0.6.1",
+    "graphql-tag": "1.2.3",
     "history": "~1.13.0",
     "html-webpack-plugin": "2.24.1",
     "humps": "1.0.0",
@@ -47,6 +49,7 @@
     "numeral": "1.5.3",
     "react": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.5",
+    "react-apollo": "0.9.0",
     "react-bootstrap-datetimerangepicker": "^2.0.3",
     "react-datetime": "^2.6.2",
     "react-dom": "^0.14.0",

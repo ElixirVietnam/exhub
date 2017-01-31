@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import DevTools from '../containers/DevTools';
 import apiMiddleware from '../middleware/api';
-import reducer from '../reducers';
+import { reducer } from '../reducers';
 
 export default function configureStore(initialState) {
   const finalCreateStore = compose(

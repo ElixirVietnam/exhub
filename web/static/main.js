@@ -20,33 +20,14 @@ import browserHistory from 'react-router/lib/browserHistory';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
 import cookie from './common/cookie';
+import { client } from './reducers';
 
-const authStore = cookie.get('auth')
-  ? JSON.parse(cookie.get('auth'))
-  : undefined;
-
-export const store = configureStore({
-  auth: {
-    authenticated: !!authStore,
-    token: authStore ? authStore.token : undefined,
-    id: authStore ? authStore.id : undefined,
-  },
-});
-
+export const store = configureStore({});
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  // Create an enhanced history that syncs navigation events with the store
   const history = syncHistoryWithStore(browserHistory, store);
-  const getUrlParameter = (param) => {
-    const name = param.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp(`[\\?&]${name}=([^&#]*)`);
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  };
-
   render(
-    <Root history={history} store={store} />,
+    <Root history={history} store={store} client={client} />,
     window.document.getElementById('route'));
 
 });

@@ -1,62 +1,29 @@
-import _ from 'lodash';
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
-import { AUTH } from '../constants';
-import auth from './auth';
+import cookie from '../common/cookie';
 
-import users from './pages/users';
-import userDetail from './pages/userDetail';
-import userCreate from './pages/userCreate';
-
-import allEntries from './pages/allEntries';
-import entryDetail from './pages/entryDetail';
-import entryCreate from './pages/entryCreate';
-
-import allReports from './pages/allReports';
-
-const APP_STATE = {
-  users: {},
-  entries: {},
-  reports: {},
-};
-
-const entities = (state = APP_STATE, action) => {
-  if (action.payload && action.payload.entities) {
-    return _.merge({}, state, action.payload.entities);
-  }
-  return state;
-};
-
-const initPage = combineReducers({
-  users,
-  userDetail,
-  userCreate,
-
-  allEntries,
-  entryDetail,
-  entryCreate,
-
-  allReports,
+const networkInterface = createNetworkInterface({
+  uri: '/graphql',
 });
 
-const appReducer = combineReducers({
-  auth,
-  entities,
-  pages: initPage,
+networkInterface.use([{
+  applyMiddleware(req, next) {
+    if (!req.options.headers) {
+      req.options.headers = {};
+    }
+
+    req.options.headers['x-exhub-token'] = cookie.get('auth');
+    next();
+  }
+}]);
+
+export const client = new ApolloClient({
+  networkInterface,
+});
+
+export const reducer = combineReducers({
   routing,
+  apollo: client.reducer(),
 });
-
-const rootReducer = (state, action) => {
-  if (action.type === AUTH.LOGOUT) {
-    return appReducer({
-      ...state,
-      entities: APP_STATE,
-      pages: initPage,
-    }, action);
-  }
-
-  return appReducer(state, action);
-};
-
-module.exports = rootReducer;

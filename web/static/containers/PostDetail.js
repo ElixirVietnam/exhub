@@ -34,15 +34,13 @@ class PostDetail extends Component {
             {
               this.props.post.comments.map((comment) => {
                 return (
-                  <li className="media">
+                  <li className="media" key={comment.id}>
                     <a href="#" className="pull-left">
                       <img src={comment.user.imageURL} height="48" width="48" className="img-rounded" />
                     </a>
                     <div className="media-body">
                       <h5 className="media-heading"><a href="#" className="person">{comment.user.name}</a></h5>
-                      <p>
-                        <Markdown source={comment.content} />
-                      </p>
+                      <Markdown source={comment.content} />
                       <p><small className="time">{comment.createdAt}</small></p>
                     </div>
                   </li>
@@ -71,11 +69,6 @@ PostDetail.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const {
-    auth,
-    entities: { users },
-  } = state;
-
   return {
     post:  {
       id: 1,
@@ -96,6 +89,7 @@ def function(param, *args):
       commentsCount: 100,
       tags: ["elixir", "hardcore"],
       comments: [{
+        id: 1,
         user: {
           name: "kiennt",
           imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
@@ -112,6 +106,7 @@ And here is a list
 + three`,
         createdAt: "2017-01-01 12:00"
       }, {
+        id: 2,
         user: {
           name: "kiennt",
           imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
@@ -128,6 +123,7 @@ And here is a list
 + three`,
         createdAt: "2017-01-01 12:00"
       }, {
+        id: 3,
         user: {
           name: "kiennt",
           imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
@@ -144,6 +140,7 @@ And here is a list
 + three`,
         createdAt: "2017-01-01 12:00"
       }, {
+        id: 4,
         user: {
           name: "kiennt",
           imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"

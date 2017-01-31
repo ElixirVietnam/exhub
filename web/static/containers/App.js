@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { graphql, compose } from 'react-apollo';
+import gql from 'graphql-tag';
 
+import Loading from '../components/Common/Loading';
 import Header from '../components/Common/Header';
-import TagCloud from '../components/Common/TagCloud';
+import TagPanel from '../components/Common/TagPanel';
 
 
 class App extends Component {
@@ -11,26 +14,30 @@ class App extends Component {
     router: PropTypes.object.isRequired,
   }
 
-  renderContent() {
-    return (
-      <div className="page-content" style={{paddingTop: "100px"}}>
-        <div className="container" style={{paddingTop: "20px"}}>
-        	<div className="row blog">
-            {this.props.children}
-        		<div className="col-md-3 hidden-xs">
-              <TagCloud tags={this.props.tags} />
-        		</div>
-        	</div>
-        </div>
-      </div>
-    );
-  }
-
   render() {
+    const { loading } = this.props.data;
+    if (loading) {
+      return <Loading />
+    }
+
+    const { categories, tags } = this.props.data;
+    const { currentUser } = this.props.userData;
+
     return (
       <div id="wrapper">
-        <Header />
-        {this.renderContent()}
+        <Header
+            user={currentUser}
+            categories={categories} />
+          <div className="page-content" style={{paddingTop: "50px"}}>
+          <div className="container" style={{paddingTop: "20px"}}>
+            <div className="row blog">
+              {this.props.children}
+              <div className="col-md-3 hidden-xs">
+                <TagPanel tags={tags} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -40,22 +47,47 @@ App.propTypes = {
   children: PropTypes.object,
 };
 
-function mapStateToProps(state) {
-  const {
-    auth,
-    entities: { users },
-  } = state;
-
-  return {
-    tags: [
-      "elixir",
-      "ruby",
-      "propgramming",
-      "hardcore",
-      "algorithm"
-    ],
-  };
+const UserQuery = gql`
+query {
+  currentUser {
+    username
+    imageUrl
+    notificationUnseenCount
+    notifications(first: 10) {
+      edges {
+        node {
+          link
+          isSeen
+          content
+          updatedAt
+        }
+      }
+    }
+  }
 }
+`;
 
-export default connect(mapStateToProps, {
-})(App);
+
+const AppQuery = gql`
+query {
+  categories(first: 100) {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+  tags(first: 100) {
+    edges {
+      node {
+        name
+      }
+    }
+  }
+}
+`;
+
+export default compose(
+  graphql(UserQuery, { name: 'userData' }),
+  graphql(AppQuery)
+)(App);

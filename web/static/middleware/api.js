@@ -93,20 +93,10 @@ export default store => next => action => {
       }
 
       const response = JSON.parse(error.response);
-      switch (response.error.type) {
-        case 'AuthenticationFailError':
-          next(actionWith({
-            type: AUTH.LOGOUT,
-          }));
-          store.dispatch(push('/signin'));
-          break;
-
-        default:
-          next(actionWith({
-            type: failureType,
-            payload: response.error,
-          }));
-      }
+      next(actionWith({
+        type: failureType,
+        payload: response.error,
+      }));
     }
   );
 };

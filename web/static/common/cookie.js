@@ -1,6 +1,6 @@
 import { canUseDOM } from 'exenv';
 
-const PREFIX = 'TOPTAL_PROJECT_';
+const PREFIX = 'EXHUB_';
 
 const cookie = {
   set({ name, value = '', path = '/', domain = '', expires = '' }) {

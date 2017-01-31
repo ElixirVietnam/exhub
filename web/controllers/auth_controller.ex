@@ -10,13 +10,12 @@ defmodule ExHub.AuthController do
 
   plug Ueberauth
 
-
   def request(conn, _params) do
     redirect(conn, to: Helpers.callback_url(conn))
   end
 
   def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
-    json(conn, %{"error": "Failed to authenticate."})
+    redirect(conn, to: "/auth/github/frontend_callback?error=login+fail")
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, %{"provider" => "github"}) do
@@ -26,9 +25,9 @@ defmodule ExHub.AuthController do
 
     case LoginFromGithubService.execute(username, email, image_url) do
       {:ok, token} ->
-        json(conn, %{"access_token": token})
+        redirect(conn, to: "/auth/github/frontend_callback?token=#{token}")
       {:error, reason} ->
-        json(conn, %{"error": reason})
+        redirect(conn, to: "/auth/github/frontend_callback?error=#{reason}")
     end
   end
 end
