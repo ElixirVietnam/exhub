@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Markdown from 'react-remarkable';
 
-import PostItem from '../components/Post/PostItem';
-import Editor from '../components/Common/Editor';
+import PostItem from '../../components/Post/PostItem';
+import Editor from '../../components/Common/Editor';
 
 
 class PostDetail extends Component {
@@ -63,10 +63,6 @@ class PostDetail extends Component {
     );
   }
 }
-
-PostDetail.propTypes = {
-  children: PropTypes.object,
-};
 
 function mapStateToProps(state) {
   return {

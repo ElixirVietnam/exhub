@@ -5,6 +5,10 @@ import Markdown from 'react-remarkable';
 
 class Editor extends Component {
 
+  static propTypes = {
+    title: PropTypes.string
+  }
+
   constructor() {
     super();
     this.state = {
@@ -56,9 +60,5 @@ class Editor extends Component {
     );
   }
 }
-
-Editor.propTypes = {
-  title: PropTypes.string
-};
 
 export default Editor;

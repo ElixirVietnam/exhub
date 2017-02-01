@@ -4,6 +4,15 @@ import { Link } from 'react-router';
 
 class PostItem extends Component {
 
+  static propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string,
+    imageURL: PropTypes.string,
+    likesCount: PropTypes.number,
+    commentsCount: PropTypes.number,
+    tags: PropTypes.arrayOf(PropTypes.string)
+  }
+
   render() {
     return  (
       <div className="post-item">
@@ -40,14 +49,5 @@ class PostItem extends Component {
     );
   }
 }
-
-PostItem.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string,
-  imageURL: PropTypes.string,
-  likesCount: PropTypes.number,
-  commentsCount: PropTypes.number,
-  tags: PropTypes.arrayOf(PropTypes.string)
-};
 
 export default PostItem;

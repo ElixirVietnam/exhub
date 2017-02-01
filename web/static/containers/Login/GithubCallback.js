@@ -43,6 +43,4 @@ class GithubCallback extends Component {
   }
 }
 
-GithubCallback.propTypes = {};
-
 export default withApollo(GithubCallback);

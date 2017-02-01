@@ -15,6 +15,7 @@ defmodule ExHub.Graphql.Schema.PostSchema do
     field :content, :string
     field :title, :string
     field :link, :string
+    field :thumbnail_url, :string
     field :likes_count, :integer
     field :comments_count, :integer
     field :inserted_at, :string
@@ -101,6 +102,8 @@ defmodule ExHub.Graphql.Schema.PostSchema do
 
       + `link` - this field is optional.
 
+      + `thumbnail_url` - this field is optional.
+
       + `tags` - string. this is a string contains a list of tags which are
       separated by a comma
       """
@@ -109,6 +112,8 @@ defmodule ExHub.Graphql.Schema.PostSchema do
         field :content, non_null(:string)
         field :title, non_null(:string)
         field :link, :string
+        field :thumbnail_url, :string
+        field :tags, :string
       end
 
       @desc """

@@ -32,7 +32,7 @@ class App extends Component {
 
     localStorage.setItem('token', undefined);
     client.resetStore();
-    
+
     // we need to set timeout in here to make sure localStorage is saved
     // before loading graphql again
     setTimeout(function() {
@@ -72,10 +72,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.object,
-};
 
 const UserQuery = gql`
 query {

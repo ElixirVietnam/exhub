@@ -4,6 +4,36 @@ import { Link } from 'react-router';
 
 class Header extends Component {
 
+  static propTypes = {
+    data: PropTypes.shape({
+      categories: PropTypes.shape({
+        edges: PropTypes.arrayOf(PropTypes.shape({
+          node: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+          }),
+        })),
+      }),
+    }),
+    user: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      notificationUnseenCount: PropTypes.number.isRequired,
+      notifications: PropTypes.shape({
+        edges: PropTypes.arrayOf(PropTypes.shape({
+          node: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+            isSeen: PropTypes.string.isRequire,
+            content: PropTypes.string.isRequired,
+            updatedAt: PropTypes.string.isRequired,
+          }),
+        })),
+      }),
+    }),
+    handleLogin: PropTypes.func.isRequired,
+    handleLogout: PropTypes.func.isRequired,
+  }
+
   renderLogo() {
     return (
       <ul className="nav navbar-nav toolbar pull-left">
@@ -135,35 +165,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  data: PropTypes.shape({
-    categories: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.shape({
-        node: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-        }),
-      })),
-    }),
-  }),
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    notificationUnseenCount: PropTypes.number.isRequired,
-    notifications: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.shape({
-        node: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          link: PropTypes.string.isRequired,
-          isSeen: PropTypes.string.isRequire,
-          content: PropTypes.string.isRequired,
-          updatedAt: PropTypes.string.isRequired,
-        }),
-      })),
-    }),
-  }),
-  handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-};
 
 export default Header;

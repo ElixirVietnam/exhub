@@ -1,14 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import PostItem from '../components/Post/PostItem';
+import PostItem from '../../components/Post/PostItem';
 
 
-class AllPosts extends Component {
+class PostList extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired,
   }
+
+  static propTypes = {
+    posts: PropTypes.arrayOf(PropTypes.object),
+  };
 
   render() {
     return (
@@ -36,10 +40,6 @@ class AllPosts extends Component {
     );
   }
 }
-
-AllPosts.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object),
-};
 
 function mapStateToProps(state) {
   return {
@@ -72,4 +72,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-})(AllPosts);
+})(PostList);

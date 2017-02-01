@@ -8,9 +8,10 @@ defmodule ExHub.Post do
     field :title
     field :content
     field :link
-    field :comments_count, :integer
-    field :likes_count, :integer
-    field :score, :float
+    field :thumbnail_url, :string, default: ""
+    field :comments_count, :integer, default: 0
+    field :likes_count, :integer, default: 0
+    field :score, :float, default: 0
 
     belongs_to :user, ExHub.User
     belongs_to :category, ExHub.Category
@@ -20,7 +21,7 @@ defmodule ExHub.Post do
     timestamps()
   end
 
-  @fields ~w[title content link score]
+  @fields ~w[title content link]
   def changeset(struct, params \\ %{}) do
     struct
     |> Ecto.Changeset.cast(params, @fields)

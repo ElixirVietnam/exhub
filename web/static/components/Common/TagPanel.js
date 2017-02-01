@@ -4,6 +4,16 @@ import { Link } from 'react-router';
 
 class TagPanel extends Component {
 
+  static propTypes = {
+    tags: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        node: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+        }),
+      })),
+    }),
+  }
+
   render() {
     return  (
       <div className="panel panel-default hidden-xs">
@@ -25,15 +35,5 @@ class TagPanel extends Component {
     );
   }
 }
-
-TagPanel.propTypes = {
-  tags: PropTypes.shape({
-    edges: PropTypes.arrayOf(PropTypes.shape({
-      node: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-    })),
-  }),
-};
 
 export default TagPanel;
