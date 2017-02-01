@@ -19,7 +19,6 @@ import browserHistory from 'react-router/lib/browserHistory';
 
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
-import cookie from './common/cookie';
 import { client } from './reducers';
 
 export const store = configureStore({});

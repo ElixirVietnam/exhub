@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { withApollo } from 'react-apollo';
 
-import cookie from '../../common/cookie';
 import Loading from '../../components/Common/Loading';
 
 
@@ -12,16 +12,21 @@ class GithubCallback extends Component {
   }
 
   componentDidMount() {
-    const { location: { query: { token } } } = this.props;
-    if (token) {
-      const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-      cookie.set({
-        name: 'auth',
-        value: token,
-        expires,
-      });
+    const { location: { query: { token } }, client } = this.props;
+    const context = this.context;
 
-      this.context.router.push('/');
+    if (token) {
+      const linkBeforeLogin = localStorage.getItem('linkBeforeLogin');
+      localStorage.setItem('token', token);
+      client.resetStore();
+
+      // we need to set timeout in here to make sure localStorage is saved
+      // before loading graphql again
+      setTimeout(function() {
+        context.router.push(linkBeforeLogin);
+      }, 1000);
+    }  else {
+      window.location.href = '/auth/github';
     }
   }
 
@@ -40,9 +45,4 @@ class GithubCallback extends Component {
 
 GithubCallback.propTypes = {};
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps, {
-})(GithubCallback);
+export default withApollo(GithubCallback);

@@ -45,8 +45,11 @@ const config = {
       include: /\.json$/,
       loader: 'json-loader',
     }, {
-      test: /\.(gif|jpg|jpeg|png|svg|ttf|eot|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file-loader?limit=8192&name=assets/assets.[ext]',
+      test: /\.(gif|jpg|jpeg|png|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file-loader?limit=8192&name=images/assets.[ext]',
+    }, {
+      test: /\.(ttf|eot|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file-loader?limit=8192&name=fonts/assets.[ext]',
     }],
   },
 

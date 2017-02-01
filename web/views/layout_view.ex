@@ -3,7 +3,7 @@ defmodule ExHub.LayoutView do
 
   if System.get_env("MIX_ENV") == "prod" do
     def bundle_url do
-      "/assets"
+      ""
     end
 
     def is_prod do

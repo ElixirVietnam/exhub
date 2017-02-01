@@ -73,7 +73,12 @@ class Header extends Component {
         </a>
         <ul className="dropdown-menu userinfo">
           <li className="divider"></li>
-          <li><a href="#"><span className="pull-left">Sign Out</span> <i className="pull-right fa fa-sign-out"></i></a></li>
+          <li>
+            <a href="#" onClick={this.props.handleLogout}>
+              <span className="pull-left">Sign Out</span>
+              <i className="pull-right fa fa-sign-out"></i>
+            </a>
+          </li>
         </ul>
       </li>
     );
@@ -82,7 +87,7 @@ class Header extends Component {
   renderLoginButton() {
     return (
       <li className="toolbar-icon-bg">
-        <a href="/auth/github">
+        <a href="#" onClick={this.props.handleLogin}>
           <span className="icon-bg"><i className="fa fa-fw fa-sign-in"></i></span>
         </a>
       </li>
@@ -156,7 +161,9 @@ Header.propTypes = {
         }),
       })),
     }),
-  })
+  }),
+  handleLogin: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
 };
 
 export default Header;
