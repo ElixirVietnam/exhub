@@ -39,6 +39,20 @@ defmodule ExHub.Graphql.Schema.PostTest do
           name
         }
       }
+      newest_posts(first: 10) {
+        edges {
+          node {
+            content
+          }
+        }
+      }
+      most_popular_posts(first: 10) {
+        edges {
+          node {
+            content
+          }
+        }
+      }
     }
     """
     conn = build_query(conn, detail_query)
@@ -50,9 +64,17 @@ defmodule ExHub.Graphql.Schema.PostTest do
             "name" => "name-1"
           },
           "tags" => tags
+        },
+        "most_popular_posts" => %{
+          "edges" => most_popular_posts,
+        },
+        "newest_posts" => %{
+          "edges" => newest_posts,
         }
       }
     } = json_response(conn, 200)
     assert 5 == length(tags)
+    assert 1 == length(most_popular_posts)
+    assert 1 == length(newest_posts)
   end
 end

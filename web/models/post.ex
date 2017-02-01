@@ -32,6 +32,16 @@ defmodule ExHub.Post do
       order_by: [asc: c.inserted_at]
   end
 
+  def newest_posts_query(_, _, _) do
+    from p in ExHub.Post,
+      order_by: [desc: p.inserted_at]
+  end
+
+  def most_popular_posts_query(_, _, _) do
+    from p in ExHub.Post,
+      order_by: [desc: p.score]
+  end
+
   def find_by_ids(_, ids) do
     unique_ids = ids |> MapSet.new |> MapSet.to_list
     query = from p in __MODULE__,

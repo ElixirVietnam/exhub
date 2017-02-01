@@ -50,6 +50,20 @@ defmodule ExHub.Graphql.Schema.PostSchema do
 
   object :post_queries do
     @desc """
+    Get all post which is sorted by popularity
+    """
+    connection field :most_popular_posts, node_type: :post do
+      resolve list(&Post.most_popular_posts_query/3)
+    end
+
+    @desc """
+    Get all post which is sorted by inserted at
+    """
+    connection field :newest_posts, node_type: :post do
+      resolve list(&Post.newest_posts_query/3)
+    end
+
+    @desc """
     Get a post by its id
     """
     field :post, type: :post do
