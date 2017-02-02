@@ -11,7 +11,7 @@ defmodule ExHub.Post do
     field :thumbnail_url, :string, default: ""
     field :comments_count, :integer, default: 0
     field :likes_count, :integer, default: 0
-    field :score, :float, default: 0
+    field :score, :float, default: 0.0
 
     belongs_to :user, ExHub.User
     belongs_to :category, ExHub.Category
@@ -21,10 +21,11 @@ defmodule ExHub.Post do
     timestamps()
   end
 
-  @fields ~w[title content link]
+  @fields ~w[title content link thumbnail_url]
   def changeset(struct, params \\ %{}) do
     struct
     |> Ecto.Changeset.cast(params, @fields)
+    |> Ecto.Changeset.put_assoc(:tags, parse_tags(params))
   end
 
   def comments_query(post, _, _) do
@@ -68,5 +69,22 @@ defmodule ExHub.Post do
     query
     |> Repo.all
     |> Enum.group_by(&elem(&1, 0), &elem(&1, 1))
+  end
+
+  defp parse_tags(params) do
+	(params["tags"] || "")
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
+    |> Enum.reject(& &1 == "")
+    |> insert_and_get_all
+  end
+
+  defp insert_and_get_all([]) do
+    []
+  end
+  defp insert_and_get_all(names) do
+    maps = Enum.map(names, &%{name: &1})
+    Repo.insert_all ExHub.Tag, maps, on_conflict: :nothing
+    Repo.all from t in ExHub.Tag, where: t.name in ^names
   end
 end

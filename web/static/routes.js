@@ -14,7 +14,7 @@ export default (
     <IndexRedirect to="home"  />
     <Route path="auth/github/frontend_callback" component={GithubCallback}  />
     <Route path="home" component={PostList}  />
-    <Route path="posts/new" component={PostCreate}  />
+    <Route path="posts/create" component={PostCreate}  />
     <Route path="posts/:postId" component={PostDetail}  />
   </Route>
 );

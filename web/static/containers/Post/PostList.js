@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { graphql, compose, withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import PostItem from '../../components/Post/PostItem';
 
@@ -10,10 +12,6 @@ class PostList extends Component {
     router: PropTypes.object.isRequired,
   }
 
-  static propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.object),
-  };
-
   render() {
     return (
       <div className="col-md-9">
@@ -21,7 +19,8 @@ class PostList extends Component {
           <div className="panel-body" style={{padding: "0px"}}>
             <section className="list-post">
               {
-                this.props.posts.map((post, index) => {
+                this.props.posts &&
+                this.props.posts.edges.map(({ node: post }, index) => {
                   return (
                     <PostItem {...post} key={index} />
                   );
@@ -41,35 +40,38 @@ class PostList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    posts:  [{
-      id: 1,
-      createdAt: "2017-01-01 20:22",
-      title: "Elixir 1.4 is released",
-      imageURL: "https://ph-files.imgix.net/ccdab0a7-678c-41bc-9e00-057714fa97ab?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
-      likesCount: 30,
-      commentsCount: 100,
-      tags: ["elixir", "hardcore"]
-    }, {
-      id: 2,
-      createdAt: "2017-01-01 20:22",
-      title: "Introduction about pattern matching",
-      imageURL: "https://ph-files.imgix.net/6eb2f632-f961-47cd-a819-ae400bf286e3?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
-      likesCount: 30,
-      commentsCount: 100,
-      tags: ["elixir", "hardcore"]
-    }, {
-      id: 3,
-      createdAt: "2017-01-01 20:22",
-      title: "Use This Flowchart to Identify What Type of Procrastinator You Are. Use This Flowchart to Identify What Type of Procrastinator You Are",
-      imageURL: "https://ph-files.imgix.net/ccdab0a7-678c-41bc-9e00-057714fa97ab?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
-      likesCount: 30,
-      commentsCount: 100,
-      tags: ["elixir", "hardcore"]
-    }]
-  };
+const getPostQuery = gql`
+query {
+  newestPosts(first: 20) {
+    edges {
+      node {
+        id
+        link
+        thumbnailUrl
+        likesCount
+        commentsCount
+        title
+        content
+        user {
+          username
+          imageUrl
+        }
+        tags {
+          name
+        }
+      }
+    }
+  }
 }
+`;
 
-export default connect(mapStateToProps, {
+
+export default graphql(getPostQuery, {
+  options: {
+    forceFetch: true,
+  },
+  props: ({ ownProps, data: { loading, newestPosts } }) => ({
+    loading,
+    posts: newestPosts
+  }),
 })(PostList);

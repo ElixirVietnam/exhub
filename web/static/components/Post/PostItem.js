@@ -5,12 +5,21 @@ import { Link } from 'react-router';
 class PostItem extends Component {
 
   static propTypes = {
-    id: PropTypes.number,
-    title: PropTypes.string,
-    imageURL: PropTypes.string,
+    id: PropTypes.string,
+    link: PropTypes.string,
+    thumbnailUrl: PropTypes.string,
     likesCount: PropTypes.number,
     commentsCount: PropTypes.number,
-    tags: PropTypes.arrayOf(PropTypes.string)
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+    })),
+    user: PropTypes.shape({
+      username: PropTypes.string,
+      imageUrl: PropTypes.string,
+    }),
+    insertedAt: PropTypes.string,
+    title: PropTypes.string,
+    content: PropTypes.string,
   }
 
   render() {
@@ -18,11 +27,11 @@ class PostItem extends Component {
       <div className="post-item">
         <Link to={`/posts/${this.props.id}`}>
           <div className="post-thumbnail">
-            <img src={this.props.imageURL} />
+            <img src={this.props.thumbnailUrl || this.props.user.imageUrl} />
           </div>
           <div className="post-content">
             <span className="post-title">{this.props.title}</span>
-            <span className="post-description">{this.props.createdAt}</span>
+            <span className="post-description">{this.props.insertedAt}</span>
           </div>
         </Link>
         <div className="post-meta">
@@ -36,13 +45,12 @@ class PostItem extends Component {
           </div>
           <div className="post-tags hidden-xs">
             {
-              this.props.tags.map((name) => {
+              this.props.tags.map(({ name }) => {
                 return (
                   <Link to={`/tags/${name}`} className="btn" key={name}>{name}</Link>
                 );
               })
             }
-            <span>+3</span>
           </div>
         </div>
       </div>

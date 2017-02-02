@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { graphql, compose, withApollo } from 'react-apollo';
+import gql from 'graphql-tag';
 import Markdown from 'react-remarkable';
 
 import PostItem from '../../components/Post/PostItem';
@@ -10,6 +12,23 @@ class PostDetail extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired,
+    post: PropTypes.shape({
+      id: PropTypes.string,
+      link: PropTypes.string,
+      thumbnailUrl: PropTypes.string,
+      likesCount: PropTypes.number,
+      commentsCount: PropTypes.number,
+      tags: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+      })),
+      user: PropTypes.shape({
+        username: PropTypes.string,
+        imageUrl: PropTypes.string,
+      }),
+      insertedAt: PropTypes.string,
+      title: PropTypes.string,
+      content: PropTypes.string,
+    })
   }
 
   renderPostDetail() {
@@ -56,106 +75,65 @@ class PostDetail extends Component {
   render() {
     return (
       <div className="col-md-9">
-        {this.renderPostDetail()}
-        {this.renderPostComments()}
+        {this.props.post && this.renderPostDetail()}
+        {this.props.post && this.props.post.comments.length > 0 && this.renderPostComments()}
         <Editor title={"Reply"}  />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    post:  {
-      id: 1,
-      author: "kiennt",
-      title: "Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. Elixir 1.4 is released. ",
-      imageURL: "https://ph-files.imgix.net/ccdab0a7-678c-41bc-9e00-057714fa97ab?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop",
-      content: `# This is h1
-### what do you think
-
-\`\`\`python
-def function(param, *args):
-  return
-\`\`\`
-
-[link](http://exhub.com)`,
-      createdAt: "2017-01-01 20:22",
-      likesCount: 30,
-      commentsCount: 100,
-      tags: ["elixir", "hardcore"],
-      comments: [{
-        id: 1,
-        user: {
-          name: "kiennt",
-          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
-        },
-        content: `## First
-I believe this should be render to markdown
-## Second
-## Third
-
-And here is a list
-
-+ one
-+ two
-+ three`,
-        createdAt: "2017-01-01 12:00"
-      }, {
-        id: 2,
-        user: {
-          name: "kiennt",
-          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
-        },
-        content: `## First
-I believe this should be render to markdown
-## Second
-## Third
-
-And here is a list
-
-+ one
-+ two
-+ three`,
-        createdAt: "2017-01-01 12:00"
-      }, {
-        id: 3,
-        user: {
-          name: "kiennt",
-          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
-        },
-        content: `## First
-I believe this should be render to markdown
-## Second
-## Third
-
-And here is a list
-
-+ one
-+ two
-+ three`,
-        createdAt: "2017-01-01 12:00"
-      }, {
-        id: 4,
-        user: {
-          name: "kiennt",
-          imageURL: "https://avatars0.githubusercontent.com/u/381451?v=3&u=48785c661d78107991dcf6d6044931170947fcf2&s=400"
-        },
-        content: `## First
-I believe this should be render to markdown
-## Second
-## Third
-
-And here is a list
-
-+ one
-+ two
-+ three`,
-        createdAt: "2017-01-01 12:00"
-      }]
+const getPostQuery = gql`
+query($id: String!) {
+  post(id: $id) {
+    id
+    link
+    thumbnailUrl
+    likesCount
+    commentsCount
+    title
+    content
+    user {
+      username
+      imageUrl
     }
-  };
+    tags {
+      name
+    }
+    comments(first: 20) {
+      edges {
+        node {
+          user {
+            username
+            imageUrl
+          }
+          content
+          likesCount
+        }
+      }
+    }
+  }
+}
+`;
+
+
+const PostDetailWithData = graphql(getPostQuery, {
+  props: ({ ownProps, data: { loading, post } }) => ({
+    loading,
+    post
+  }),
+})(PostDetail);
+
+class PostDetailContainer extends Component {
+  render() {
+    return (
+      <PostDetailWithData id={this.props.params.postId}  />
+    );
+  }
 }
 
-export default connect(mapStateToProps, {
-})(PostDetail);
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(PostDetailContainer);

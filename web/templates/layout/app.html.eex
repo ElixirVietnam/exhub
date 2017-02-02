@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="ExHub Application">
-    <title>ExHub Application</title>
+    <title>Elixir Vietnam</title>
     <link rel=icon href="favicon.ico" type="image/png">
     <%= if is_prod do %>
     <link rel="stylesheet" href="<%= bundle_url %>/css/style.css?version=<%= version %>">

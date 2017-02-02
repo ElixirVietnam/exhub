@@ -5,7 +5,7 @@ defmodule ExHub.Comment do
     field :content
     field :likes_count, :integer, default: 0
 
-    belongs_to :posts, ExHub.Post
+    belongs_to :post, ExHub.Post
     belongs_to :user, ExHub.User
 
     timestamps()

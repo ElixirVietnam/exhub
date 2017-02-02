@@ -39,8 +39,8 @@ class Header extends Component {
       <ul className="nav navbar-nav toolbar pull-left">
         <li>
           <Link to="/" className="username">
-            <span className="hidden-xs">ExHub</span>
-            <img className="img-circle" src="https://cdn.worldvectorlogo.com/logos/product-hunt.svg" alt="Exhub" />
+            <span className="hidden-xs">Elixir Vietnam</span>
+            <img className="img-circle" src="https://cdn-images-1.medium.com/max/72/1*EP_il-7koXT6DHMdw40q1w.png" alt="Elixirvn" />
           </Link>
         </li>
       </ul>

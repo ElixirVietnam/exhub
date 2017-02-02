@@ -42,18 +42,24 @@ class Editor extends Component {
         <div className="panel panel-body">
           <div className="tab-content">
             <div className="tab-pane active" id="write">
-              <textarea
-                  placeholder="Your thought in markdown format..."
-                  style={{resize: "vertical", width: "100%", height: "200px"}}
-                  ref="content">
-              </textarea>
+              <div className="form-group">
+                <textarea
+                    placeholder="Your thought in markdown format..."
+                    style={{resize: "vertical", width: "100%", height: "200px"}}
+                    ref="content">
+                </textarea>
+              </div>
             </div>
             <div className="tab-pane" id="preview" style={{minHeight: "200px"}}>
-              <Markdown source={content} />
+              <div className="form-group">
+                <Markdown source={content} />
+              </div>
             </div>
           </div>
-          <div className="row mt15 ml10">
-            <button className="pull-left btn-primary btn">Reply</button>
+          <div className="panel-footer">
+            <div className="pull-right">
+              <a href="#" className="btn btn-primary">Reply</a>
+            </div>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@
 /deps
 /node_modules
 /*.ez
+*.DS_Store
 
 # Generated on crash by the VM
 erl_crash.dump

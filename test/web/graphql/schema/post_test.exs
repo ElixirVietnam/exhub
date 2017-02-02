@@ -1,9 +1,16 @@
 defmodule ExHub.Graphql.Schema.PostTest do
   use Plug.Test
   use ExHub.ConnCase
-  alias ExHub.{Post, Tag, Category, Repo}
+  alias ExHub.{User, AccessToken, Post, Tag, Category, Repo}
 
+  @default_user %{
+    username: "test",
+    email: "test@test.com",
+    image_url: "url",
+  }
   setup do
+    user = %User{} |> User.changeset(@default_user) |> Repo.insert!
+    token = AccessToken.user_changeset(user) |> Repo.insert!
     cat = %Category{} |> Category.changeset(%{name: "name-1"}) |> Repo.insert!
     tags =
       1..5
@@ -16,7 +23,7 @@ defmodule ExHub.Graphql.Schema.PostTest do
       |> Ecto.Changeset.put_assoc(:category, cat)
       |> Ecto.Changeset.put_assoc(:tags, tags)
       |> Repo.insert!
-    [post: post]
+    [post: post, user: user, token: token]
   end
 
   test "query get post", %{conn: conn, post: post} do
@@ -76,5 +83,33 @@ defmodule ExHub.Graphql.Schema.PostTest do
     assert 5 == length(tags)
     assert 1 == length(most_popular_posts)
     assert 1 == length(newest_posts)
+  end
+
+
+  test "mutation create post", %{conn: conn, token: token} do
+    detail_query = """
+    mutation {
+      createPost(input: {
+        category: "name-1",
+        tags: "name-1,name-2",
+        title: "this is title",
+        content: "## This is a markdown content"
+      }) {
+        post {
+          id
+        }
+      }
+    }
+    """
+    conn = build_token_query(conn, token, detail_query)
+    assert %{
+      "data" => %{
+        "createPost" => %{
+          "post" => %{
+            "id" => id
+          }
+        }
+      }
+    } = json_response(conn, 200)
   end
 end
