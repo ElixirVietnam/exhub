@@ -8,7 +8,7 @@ defmodule ExHub.Graphql.Schema.TagTest do
     1..5
     |> Enum.map(fn index ->
       %Post{}
-      |> Post.changeset(%{content: "content-#{index}", score: index})
+      |> Post.changeset(%{title: "t", content: "content-#{index}", score: index})
       |> Ecto.Changeset.put_assoc(:tags, [tag])
     end)
     |> Enum.each(&Repo.insert/1)

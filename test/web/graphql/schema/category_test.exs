@@ -8,7 +8,7 @@ defmodule ExHub.Graphql.Schema.CategoryTest do
     1..5
     |> Enum.map(fn index ->
       %Post{}
-      |> Post.changeset(%{content: "content-#{index}", score: index})
+      |> Post.changeset(%{"title": "title", content: "content-#{index}", score: index})
       |> Ecto.Changeset.put_assoc(:category, category)
     end)
     |> Enum.each(&Repo.insert/1)

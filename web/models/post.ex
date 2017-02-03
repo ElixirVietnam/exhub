@@ -25,6 +25,7 @@ defmodule ExHub.Post do
   def changeset(struct, params \\ %{}) do
     struct
     |> Ecto.Changeset.cast(params, @fields)
+    |> Ecto.Changeset.validate_required([:title, :content])
     |> Ecto.Changeset.put_assoc(:tags, parse_tags(params))
   end
 
@@ -72,7 +73,7 @@ defmodule ExHub.Post do
   end
 
   defp parse_tags(params) do
-	(params["tags"] || "")
+	(params[:tags] || "")
     |> String.split(",")
     |> Enum.map(&String.trim/1)
     |> Enum.reject(& &1 == "")
@@ -83,7 +84,11 @@ defmodule ExHub.Post do
     []
   end
   defp insert_and_get_all(names) do
-    maps = Enum.map(names, &%{name: &1})
+    maps = Enum.map(names, &%{
+      name: &1,
+      inserted_at: Ecto.DateTime.utc,
+      updated_at: Ecto.DateTime.utc
+    })
     Repo.insert_all ExHub.Tag, maps, on_conflict: :nothing
     Repo.all from t in ExHub.Tag, where: t.name in ^names
   end

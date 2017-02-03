@@ -14,7 +14,7 @@ defmodule ExHub.LoginFromGithubServiceTest do
       assert 1 == Repo.aggregate(User, :count, :id)
     end
 
-    test "creat new access token" do
+    test "create new access token" do
       assert 1 == Repo.aggregate(AccessToken, :count, :id)
     end
 

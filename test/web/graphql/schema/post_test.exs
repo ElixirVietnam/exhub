@@ -19,7 +19,7 @@ defmodule ExHub.Graphql.Schema.PostTest do
       end)
     post =
       %Post{}
-      |> Post.changeset(%{content: "content hello"})
+      |> Post.changeset(%{title: "Hello", content: "content hello"})
       |> Ecto.Changeset.put_assoc(:category, cat)
       |> Ecto.Changeset.put_assoc(:tags, tags)
       |> Repo.insert!
@@ -88,12 +88,13 @@ defmodule ExHub.Graphql.Schema.PostTest do
 
   test "mutation create post", %{conn: conn, token: token} do
     detail_query = """
-    mutation {
-      createPost(input: {
-        category: "name-1",
-        tags: "name-1,name-2",
-        title: "this is title",
-        content: "## This is a markdown content"
+    mutation  {
+      createPost(input:{
+        clientMutationId:"1",
+        category:"elixr"
+        tags:"hello",
+        title:"title",
+        content:"content"
       }) {
         post {
           id
