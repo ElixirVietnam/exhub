@@ -22,8 +22,6 @@ class PostCreate extends Component {
     const title = this.refs.title.value;
     const content = this.refs.content.value;
 
-    console.log(tags);
-
     if (title && content) {
       this.props.mutate({
         variables: {
@@ -150,7 +148,8 @@ mutation createPost(
       id
     }
   }
-}`;
+}
+`;
 
 
 const getTagsAndCategoriesQuery = gql`

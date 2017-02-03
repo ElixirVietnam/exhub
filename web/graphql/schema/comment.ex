@@ -9,6 +9,7 @@ defmodule ExHub.Graphql.Schema.CommentSchema do
   connection node_type: :comment
 
   object :comment do
+    field :id, :id
     field :content, :string
     field :likes_count, :string
     field :inserted_at, :string

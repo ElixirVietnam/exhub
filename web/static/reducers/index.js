@@ -19,6 +19,13 @@ networkInterface.use([{
 
 export const client = new ApolloClient({
   networkInterface,
+  addTypename: true,
+  dataIdFromObject: (result) => {
+    if (result.id && result.__typename) {
+      return result.__typename + result.id;
+    }
+    return null;
+  }
 });
 
 export const reducer = combineReducers({

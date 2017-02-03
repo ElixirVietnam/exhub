@@ -91,7 +91,7 @@ defmodule ExHub.Graphql.Schema.PostTest do
     mutation  {
       createPost(input:{
         clientMutationId:"1",
-        category:"elixr"
+        category:"name-1"
         tags:"hello",
         title:"title",
         content:"content"

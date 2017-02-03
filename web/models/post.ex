@@ -32,7 +32,7 @@ defmodule ExHub.Post do
   def comments_query(post, _, _) do
     from c in ExHub.Comment,
       where: c.post_id == ^post.id,
-      order_by: [asc: c.inserted_at]
+      order_by: [desc: c.inserted_at]
   end
 
   def newest_posts_query(_, _, _) do

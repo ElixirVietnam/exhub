@@ -10,4 +10,10 @@ defmodule ExHub.Comment do
 
     timestamps()
   end
+
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> Ecto.Changeset.cast(params, [:content])
+    |> Ecto.Changeset.validate_required([:content])
+  end
 end

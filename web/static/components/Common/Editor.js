@@ -6,11 +6,12 @@ import Markdown from 'react-remarkable';
 class Editor extends Component {
 
   static propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired,
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       content: ""
     };
@@ -21,6 +22,24 @@ class Editor extends Component {
     this.setState({
       content: content
     });
+  }
+
+  handleReply() {
+    const { postId } = this.props;
+    const content = this.refs.content.value;
+
+    if (content) {
+      this.props.createComment({
+        postId,
+        content
+      })
+      .then(() => {
+        this.refs.content.value = "";
+        this.setState({
+          content: ""
+        });
+      })
+    }
   }
 
   render() {
@@ -58,7 +77,7 @@ class Editor extends Component {
           </div>
           <div className="panel-footer">
             <div className="pull-right">
-              <a href="#" className="btn btn-primary">Reply</a>
+              <button className="btn btn-primary" onClick={this.handleReply.bind(this)}>Reply</button>
             </div>
           </div>
         </div>

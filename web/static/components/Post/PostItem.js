@@ -20,20 +20,37 @@ class PostItem extends Component {
     insertedAt: PropTypes.string,
     title: PropTypes.string,
     content: PropTypes.string,
+    isDetail: PropTypes.bool
   }
 
   render() {
     return  (
       <div className="post-item">
-        <Link to={`/posts/${this.props.id}`}>
-          <div className="post-thumbnail">
-            <img src={this.props.thumbnailUrl || this.props.user.imageUrl} />
-          </div>
-          <div className="post-content">
-            <span className="post-title">{this.props.title}</span>
-            <span className="post-description">{this.props.insertedAt}</span>
-          </div>
-        </Link>
+        {
+          this.props.isDetail
+          ? (
+            <a href={this.props.link} target="_about">
+              <div className="post-thumbnail">
+                <img src={this.props.thumbnailUrl || this.props.user.imageUrl} />
+              </div>
+              <div className="post-content">
+                <span className="post-title">{this.props.title}</span>
+                <span className="post-description">{this.props.insertedAt}</span>
+              </div>
+            </a>
+          )
+          : (
+            <Link to={`/posts/${this.props.id}`}>
+              <div className="post-thumbnail">
+                <img src={this.props.thumbnailUrl || this.props.user.imageUrl} />
+              </div>
+              <div className="post-content">
+                <span className="post-title">{this.props.title}</span>
+                <span className="post-description">{this.props.insertedAt}</span>
+              </div>
+            </Link>
+          )
+        }
         <div className="post-meta">
           <div className="post-action-buttons">
             <a href="#" className="btn">

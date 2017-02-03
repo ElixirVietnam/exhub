@@ -4,6 +4,21 @@ defmodule ExHub.Service.Post.CreatePostServiceTest do
   alias ExHub.{User, Post, Category, Tag, Repo}
   alias ExHub.Services.Post.CreatePostService
 
+  test "error if create post with category is nil" do
+    user =
+      %User{}
+      |> User.changeset(%{
+        username: "new", email: "test1@test.com", image_url: "aaa"
+      })
+      |> Repo.insert!
+    params = %{
+      category: "book",
+      title: "title",
+      content: "content",
+    }
+    assert {:error , _} = CreatePostService.call(user, params)
+  end
+
   describe "create post" do
     setup do
       user =
