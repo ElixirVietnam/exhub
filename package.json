@@ -54,6 +54,7 @@
     "react-bootstrap-datetimerangepicker": "^2.0.3",
     "react-datetime": "^2.6.2",
     "react-dom": "^0.14.0",
+    "react-ga": "2.1.2",
     "react-mixin": "^3.0.0",
     "react-redux": "^4.0.0",
     "react-remarkable": "1.1.1",
