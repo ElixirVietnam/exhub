@@ -17,10 +17,12 @@ class PostCreate extends Component {
     const link = this.refs.link.value;
     const thumbnailUrl = this.refs.thumbnailUrl.value;
     const category = this.refs.category.value;
-    const tagsList = this.refs.tags.refs.input._values.value || [];
+    const tagsList = this.refs.tags.refs.input.props.value || [];
     const tags = tagsList.join(',');
     const title = this.refs.title.value;
     const content = this.refs.content.value;
+
+    console.log(tags);
 
     if (title && content) {
       this.props.mutate({

@@ -73,7 +73,7 @@ class App extends Component {
   }
 }
 
-const UserQuery = gql`
+const getCurrentUserQuery = gql`
 query {
   currentUser {
     username
@@ -94,7 +94,7 @@ query {
 `;
 
 
-const AppQuery = gql`
+const getTagsAndCategories = gql`
 query {
   categories(first: 100) {
     edges {
@@ -114,6 +114,8 @@ query {
 `;
 
 export default withApollo(compose(
-  graphql(UserQuery, { name: 'userData' }),
-  graphql(AppQuery)
+  graphql(getCurrentUserQuery, {
+    name: 'userData'
+  }),
+  graphql(getTagsAndCategories)
 )(App));

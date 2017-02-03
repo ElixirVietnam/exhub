@@ -132,8 +132,4 @@ class PostDetailContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(PostDetailContainer);
+export default PostDetailContainer;
