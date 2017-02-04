@@ -35,8 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :ex_hub, ExHub.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "ex_hub_dev",
+  username: "your_username",
+  password: "your_password",
+  database: "your_db",
   hostname: "localhost",
   pool_size: 10
