@@ -10,19 +10,13 @@ use Mix.Config
 # or recreate for your teammates (or you later on).
 config :ex_hub, ExHub.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "exhub.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/manifest.json",
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
+  url: [scheme: "http", host: "elixirvn.com"]
+  # url: [scheme: "https", host: "elixirvn.com", port: 443],
+  # force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  # cache_static_manifest: "priv/static/manifest.json",
+  # secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
-config :ex_hub, ExHub.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "ex_hub_prod",
-  pool_size: 20
-
 config :ex_hub, ExHub.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
