@@ -2,6 +2,8 @@
 
 To start your Phoenix app:
 
+  * Rename dev.example.exs to dev.exs
+  * Configure your database
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Start Phoenix endpoint with `mix phoenix.server`
