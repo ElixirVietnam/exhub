@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -23,6 +24,11 @@ class PostCreate extends Component {
     const content = this.refs.content.value;
 
     if (title && content) {
+      ReactGA.event({
+        category: 'PostCreate',
+        action: 'create',
+      });
+
       this.props.mutate({
         variables: {
           link,
@@ -40,6 +46,11 @@ class PostCreate extends Component {
       .catch((error) => {
         alert(error);
       })
+    } else {
+      ReactGA.event({
+        category: 'PostCreate',
+        action: 'createFail',
+      });
     }
   }
 

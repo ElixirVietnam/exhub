@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router';
 
 
@@ -14,6 +15,13 @@ class TagPanel extends Component {
     }),
   }
 
+  handleClickTag() {
+    ReactGA.event({
+      category: 'TagCloud',
+      action: 'clickTagButton',
+    });
+  }
+
   render() {
     return  (
       <div className="panel panel-default hidden-xs">
@@ -24,7 +32,7 @@ class TagPanel extends Component {
         {
           this.props.tags.edges.map(({ node: { name } }) => {
             return (
-              <Link to={`/tags/${name}`} key={name}>
+              <Link to={`/tags/${name}`} key={name} onClick={this.handleClickTag.bind(this)}>
                 <span className="label label-alizarin m5">{name}</span>
               </Link>
             );

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactGA from 'react-ga';
 import { Link } from 'react-router';
 import Markdown from 'react-remarkable';
 
@@ -19,6 +20,12 @@ class Editor extends Component {
 
   handlePreviewClick() {
     const content = this.refs.content.value;
+
+    ReactGA.event({
+      category: 'PostDetail',
+      action: 'preview',
+    });
+
     this.setState({
       content: content
     });
@@ -29,6 +36,11 @@ class Editor extends Component {
     const content = this.refs.content.value;
 
     if (content) {
+      ReactGA.event({
+        category: 'PostDetail',
+        action: 'replyComment',
+      });
+
       this.props.createComment({
         postId,
         content
@@ -39,6 +51,11 @@ class Editor extends Component {
           content: ""
         });
       })
+    } else {
+      ReactGA.event({
+        category: 'PostDetail',
+        action: 'replyCommentFail',
+      });
     }
   }
 

@@ -17,7 +17,8 @@ class TagSelectInput extends Component {
     };
   }
 
-  createNewTag(name) {
+  createNewTag(tagName) {
+    const name = tagName.toLowerCase();
     const data = this.state.data.concat(name);
     const value = this.state.value.concat(name);
     this.setState({ value, data });

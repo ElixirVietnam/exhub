@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactGA from 'react-ga';
 import { connect } from 'react-redux';
 import { graphql, compose, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -20,6 +21,11 @@ class App extends Component {
       context: { router }
     } = this;
 
+    ReactGA.event({
+      category: 'App',
+      action: 'login',
+    });
+
     localStorage.setItem('linkBeforeLogin', pathname);
     router.push('/auth/github/frontend_callback');
   }
@@ -29,6 +35,11 @@ class App extends Component {
       props: { location: { pathname }, client },
       context: { router }
     } = this;
+
+    ReactGA.event({
+      category: 'App',
+      action: 'logout',
+    });
 
     localStorage.setItem('token', undefined);
     client.resetStore();

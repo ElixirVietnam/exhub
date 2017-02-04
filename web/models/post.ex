@@ -76,6 +76,7 @@ defmodule ExHub.Post do
 	(params[:tags] || "")
     |> String.split(",")
     |> Enum.map(&String.trim/1)
+    |> Enum.map(&String.downcase/1)
     |> Enum.reject(& &1 == "")
     |> insert_and_get_all
   end
