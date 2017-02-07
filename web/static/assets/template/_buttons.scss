@@ -14,7 +14,7 @@
   user-select: none;
   border: $input-btn-border-width solid transparent;
   @include button-size($exhub-btn-padding-y, $exhub-btn-padding-x,
-  $exhub-font-size-base, $exhub-btn-border-radius);
+  $exhub-font-size-sm, $exhub-btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -53,12 +53,19 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
+.btn-default {
+  @include gradient-directional(#F2F4F7, #FFFFFF, 0deg);
+  color: #354052;
+}
+
 .btn-primary {
-  @include button-variant($exhub-btn-primary-color, $exhub-btn-primary-bg, $btn-primary-border);
+  background: $exhub-blue;
+  @include gradient-directional(#1991EB 2%, #2DA1F8 98%, -1deg);
 }
 
 .btn-success {
-  @include button-variant($exhub-btn-success-color, $exhub-btn-success-bg, $btn-success-border);
+  background: $exhub-green; 
+  @include gradient-directional(#39B54A 0%, #34AA44 98%, -180deg);
 }
 
 
@@ -76,9 +83,24 @@ fieldset[disabled] a.btn {
 // Link buttons
 //
 
+a {
+  &.btn-default {
+
+  }
+
+  &.btn-success {
+    color: $exhub-white;
+
+    &:hover {
+      @include gradient-directional(#1E930B 3%,#1E9D09 100%, -1deg);
+    }
+  }
+}
+
+
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: $exhub-font-weight-normal;
+  font-weight: $exhub-font-weight-bold;
   color: $exhub-link-color;
   border-radius: 0;
 
@@ -123,6 +145,13 @@ fieldset[disabled] a.btn {
 // Vertically space out multiple block buttons
 .btn-block + .btn-block {
   margin-top: $btn-block-spacing-y;
+}
+
+
+// Button sizes
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
 }
 
 // Specificity overrides

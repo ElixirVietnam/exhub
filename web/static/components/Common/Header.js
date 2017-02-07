@@ -38,7 +38,7 @@ class Header extends Component {
     return (
       <Link to="/">
             <span className="text-hide">Elixir Vietnam</span>
-            <span className="btn btn-primary exhub-logo-text text-center">Eh</span>
+            <span className="btn exhub-logo-text text-center">Eh</span>
           </Link>
     );
   }
@@ -124,7 +124,12 @@ class Header extends Component {
     
 
     return (
-      <Link className="btn-new-post btn border-0 btn-primary" to={`/new/post`}><span>+</span>New Post</Link> 
+        <section className="topnav-right-content d-flex">
+      <form className="form-inline my-2 my-lg-0 mr-4 header-search d-flex justify-content-end">
+        <input className="form-control mr-sm-2 w-75" type="text" placeholder="Search" />
+      </form>
+      <a className="btn btn-success btn-signin" href="#" onClick={this.props.handleLogin}>Sign In</a>
+      </section>
     );
   }
 

@@ -75,8 +75,9 @@ $exhub-link-font-weight-bold: $exhub-font-weight-bold !default;
 
 
 $exhub-btn-padding-x: 2rem !default;
-$exhub-btn-padding-y: 1.125rem !default;
-$exhub-btn-font-weight: $exhub-font-weight-normal !default;
+$exhub-btn-padding-y: 0.75rem !default;
+$exhub-btn-font-weight: $exhub-font-weight-bold !default;
+$exhub-btn-font-size: 0.875rem !default;
 
 $exhub-btn-primary-color: $exhub-white !default;
 $exhub-btn-primary-bg: $exhub-blue !default;
@@ -91,7 +92,7 @@ $exhub-btn-border-radius: $exhub-border-radius !default;
 
 
 // Forms
-
+$exhub-input-padding-y: 0.75rem !default;
 $exhub-input-bg: $exhub-white !default;
 $exhub-input-color: rgba(53, 64, 82, 0.5) !default;
 $exhub-input-border-color: #DFE3E9 !default;
@@ -99,6 +100,7 @@ $exhub-input-border-radius: $exhub-border-radius;
 
 $exhub-input-bg-focus: $exhub-white !default;
 $exhub-input-border-focus: #8D98A9 !default;
+$exhub-input-color-focus: #354052 !default;
 
-$exhub-input-color-placeholder: rgba(53, 64, 82, .05) !default;
+$exhub-input-color-placeholder: rgba(53, 64, 82, .5) !default;
 $exhub-input-color-selected: #354052 !default;

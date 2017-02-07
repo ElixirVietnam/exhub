@@ -9,8 +9,8 @@
   width: 100%;
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height;
-  padding: $input-padding-y $input-padding-x;
-  font-size: $exhub-font-size-base;
+  padding: $exhub-input-padding-y $input-padding-x;
+  font-size: $exhub-font-size-sm;
   line-height: $input-line-height;
   color: $exhub-input-color;
   background-color: $exhub-input-bg;
