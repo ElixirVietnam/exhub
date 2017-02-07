@@ -15,7 +15,7 @@ defmodule ExHub.LayoutView do
     end
 
     def is_prod do
-      true
+      false
     end
   end
 
