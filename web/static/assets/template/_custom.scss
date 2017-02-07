@@ -4,7 +4,7 @@
 // without modifying source files
 
 // Load font from CDN Google
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+//@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
 
 // Colors custom
 
@@ -70,6 +70,8 @@ $exhub-headings-color: #393C3E !default;
 $exhub-headings-font-family: inherit !default;
 $exhub-headings-font-weight: $exhub-font-weight-bold !default;
 $exhub-headings-line-height: 2.75rem !default;
+
+$exhub-link-font-weight-bold: $exhub-font-weight-bold !default;
 
 
 $exhub-btn-padding-x: 2rem !default;
