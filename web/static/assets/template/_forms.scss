@@ -10,10 +10,10 @@
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height;
   padding: $input-padding-y $input-padding-x;
-  font-size: $font-size-base;
+  font-size: $exhub-font-size-base;
   line-height: $input-line-height;
-  color: $input-color;
-  background-color: $input-bg;
+  color: $exhub-input-color;
+  background-color: $exhub-input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
   background-clip: padding-box;
@@ -22,13 +22,12 @@
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @if $enable-rounded {
     // Manually use the if/else instead of the mixin to account for iOS override
-    border-radius: $input-border-radius;
+    border-radius: $exhub-input-border-radius;
   } @else {
     // Otherwise undo the iOS default
     border-radius: 0;
   }
 
-  @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 
   // Unstyle the caret on `<select>`s in IE10+.
@@ -42,7 +41,7 @@
 
   // Placeholder
   &::placeholder {
-    color: $input-color-placeholder;
+    color: $exhub-input-color-placeholder;
     // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
     opacity: 1;
   }

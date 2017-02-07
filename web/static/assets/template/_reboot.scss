@@ -47,12 +47,12 @@ html {
 
 body {
   margin: 0; // 1
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: $font-weight-base;
+  font-family: $exhub-font-family-base;
+  font-size: $exhub-font-size-base;
+  font-weight: $exhub-font-weight-normal;
   line-height: $line-height-base;
-  color: $body-color;
-  background-color: $body-bg; // 2
+  color: $exhub-body-color;
+  background-color: $exhub-body-bg; // 2
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.

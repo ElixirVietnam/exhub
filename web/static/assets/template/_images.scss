@@ -4,7 +4,6 @@
 // We previously tried the "images are responsive by default" approach in Bootstrap v2,
 // and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
 // which weren't expecting the images within themselves to be involuntarily resized.
-// See also https://github.com/twbs/bootstrap/issues/18178
 .img-fluid {
   @include img-fluid;
 }
@@ -13,7 +12,7 @@
 // Image thumbnails
 .img-thumbnail {
   padding: $thumbnail-padding;
-  background-color: $thumbnail-bg;
+  background-color: $exhub-thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
   @include border-radius($thumbnail-border-radius);
   @include transition($thumbnail-transition);

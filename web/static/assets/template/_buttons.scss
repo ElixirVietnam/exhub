@@ -6,14 +6,15 @@
 
 .btn {
   display: inline-block;
-  font-weight: $btn-font-weight;
+  font-weight: $exhub-btn-font-weight;
   line-height: $btn-line-height;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include button-size($exhub-btn-padding-y, $exhub-btn-padding-x,
+  $exhub-font-size-base, $exhub-btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -53,43 +54,22 @@ fieldset[disabled] a.btn {
 //
 
 .btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant($exhub-btn-primary-color, $exhub-btn-primary-bg, $btn-primary-border);
 }
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
+
 .btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($exhub-btn-success-color, $exhub-btn-success-bg, $btn-success-border);
 }
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-}
+
 
 // Remove all backgrounds
 .btn-outline-primary {
   @include button-outline-variant($btn-primary-bg);
 }
-.btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border);
-}
-.btn-outline-info {
-  @include button-outline-variant($btn-info-bg);
-}
 .btn-outline-success {
   @include button-outline-variant($btn-success-bg);
 }
-.btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg);
-}
-.btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg);
-}
+
 
 
 //
@@ -98,8 +78,8 @@ fieldset[disabled] a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: $font-weight-normal;
-  color: $link-color;
+  font-weight: $exhub-font-weight-normal;
+  color: $exhub-link-color;
   border-radius: 0;
 
   &,
@@ -130,21 +110,6 @@ fieldset[disabled] a.btn {
     }
   }
 }
-
-
-//
-// Button Sizes
-//
-
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
-}
-.btn-sm {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
-}
-
 
 //
 // Block button
