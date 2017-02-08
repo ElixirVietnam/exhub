@@ -36,14 +36,10 @@ class Header extends Component {
 
   renderLogo() {
     return (
-      <ul className="nav navbar-nav toolbar pull-left">
-        <li>
-          <Link to="/" className="username">
-            <span className="hidden-xs">Elixir Vietnam</span>
-            <img className="img-circle" src="https://cdn-images-1.medium.com/max/72/1*EP_il-7koXT6DHMdw40q1w.png" alt="Elixirvn" />
+      <Link to="/">
+            <span className="text-hide">Elixir Vietnam</span>
+            <span className="btn exhub-logo-text text-center">Eh</span>
           </Link>
-        </li>
-      </ul>
     );
   }
 
@@ -124,43 +120,45 @@ class Header extends Component {
     );
   }
 
-  renderHeader() {
-    const { user } = this.props;
-    if (!user) {
-      return (
-        <ul className="nav navbar-nav toolbar pull-right">
-          {this.renderLoginButton()}
-        </ul>
-      );
-    }
+  renderTopRightContent() {
+    
 
     return (
-      <ul className="nav navbar-nav toolbar pull-right">
-        {this.renderAddPostButton()}
-        {this.renderNotificationButton()}
-        {this.renderAvatarButton()}
-      </ul>
+        <section className="topnav-right-content d-flex">
+      <form className="form-inline my-2 my-lg-0 mr-4 header-search d-flex justify-content-end">
+        <input className="form-control mr-sm-2 w-75" type="text" placeholder="Search" />
+      </form>
+      <a className="btn btn-success btn-signin" href="#" onClick={this.props.handleLogin}>Sign In</a>
+      </section>
     );
   }
 
   render() {
     return  (
-      <header id="topnav" className="navbar navbar-default navbar-fixed-top clearfix" role="banner">
-        <div className="container">
-          <div className="row">
-            {this.renderLogo()}
-            {this.renderHeader()}
-            <ul className="nav navbar-nav toolbar pull-left">
-            {
-              this.props.categories.edges.map(({ node }) => {
-                return (
-                  <li key={node.name}><Link to={`/categories/${node.name}`}><span>{node.name}</span></Link></li>
-                );
-              })
-            }
-            </ul>
-          </div>
-        </div>
+      <header id="topnav" className="header-navbar-default fixed-top" role="banner">
+        <section className="container">
+          <section className="row topnav-container">
+            <nav className="navbar navbar-toggleable-md navbar-content">
+              <section className="navbar-brand topnav-left-logo mr-4">
+                {this.renderLogo()}
+              </section>
+              <section className="topnav-left-categories mr-auto">
+                <ul className="nav">
+                {
+                  this.props.categories.edges.map(({ node }) => {
+                    return (
+                      <li className="nav-item" key={node.name}><Link className="nav-link exhub-nav-link" activeClassName="active" to={`/categories/${node.name}`}><span>{node.name}</span></Link></li>
+                    );
+                  })
+                }
+                </ul>
+              </section>
+            <section className="topnav-right">
+              {this.renderTopRightContent()}
+            </section>
+          </nav>
+          </section>
+        </section>
       </header>
     );
   }

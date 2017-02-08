@@ -1,0 +1,62 @@
+#wrapper {
+  width: 100%;
+  position: relative;
+}
+
+#topnav {
+  width: 100%;
+}
+
+// Header Style
+
+.header-navbar-default {
+  background-color: $exhub-white;
+  box-shadow: inset 0 -1px 0 #E6EAEE;
+
+  .exhub-logo-text {
+    border: none;
+    text-transform: uppercase;
+    font-weight: $exhub-font-weight-bold;
+    width: 44px;
+    height: 44px;
+    padding: .875rem 0 0 0;
+    background: $exhub-white;
+    color: $exhub-white;
+
+    @include gradient-directional(#1991EB, #2DA1F8, -1deg);
+  }
+}
+
+.navbar-content {
+  width: 100%;
+}
+
+
+.btn-signin {
+  box-sizing: border-box;
+  border-color: #249533;
+}
+.exhub-nav-link {
+    font-weight: $exhub-link-font-weight-bold; 
+    font-size: $exhub-font-size-sm; 
+    color: #9FA9BA; 
+    padding: 0.5em 1.25em;
+
+    &:hover {
+      color: #354052;
+    }
+
+    &.active {
+      color: #354052;
+    }
+  }
+
+  .btn-new-post {
+    @include gradient-y(#1991EB, #2DA1F8);
+    border-color: #1585D8;
+    padding: 5px 10px;
+  }
+
+  .header-search {
+    min-width: 16.67rem;
+  }

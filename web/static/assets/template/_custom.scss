@@ -1,0 +1,106 @@
+// Bootstrap overrides
+//
+// Copy variables from `_variables.scss` to this file to override default values
+// without modifying source files
+
+// Load font from CDN Google
+//@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+
+// Colors custom
+
+$exhub-blue: #00AEEF !default;
+$exhub-yellow: #FECF39 !default;
+$exhub-yellow-light: #FFDF6D !default;
+$exhub-gray-light: #DBDBDB !default;
+$exhub-brown: #81736A !default;
+$exhub-blue-brown: #68768C !default;
+$exhub-pink: #FFA2AD !default;
+$exhub-green-light: #74C7A8 !default;
+$exhub-green: #00797A !default;
+$exhub-purple: #8781BD !default;
+$exhub-red: #ED1C24 !default;
+$exhub-text-color: #71787E !default;
+$exhub-white: #fff !default;
+
+// Custom brand
+$exhub-brand-primary: $exhub-blue !default;
+$exhub-brand-success: $exhub-green !default; 
+$exhub-brand-danger: $exhub-red !default; 
+
+// Custom body
+$exhub-body-bg: #EFF3F6 !default;
+$exhub-body-color: $exhub-text-color !default; 
+
+// Custom style anchor elements
+
+$exhub-link-color: $exhub-brand-primary !default;
+$exhub-link-decoration: none !default;
+$exhub-link-hover-color: darken($exhub-link-color, 15%) !default;
+$exhub-link-hover-decoration: none !default;
+
+
+// Custom images component
+
+$exhub-thumbnail-bg: #DBDBDB !default;
+
+
+// Custom fonts
+
+$exhub-font-family-sans-serif: "Source Sans Pro", -apple-system, system-ui,
+BlinkMacSystemFont, "Seogoe Ui", Roboto, "Helvetica Neue", Arial, sans-serif
+!default;
+$exhub-font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono",
+"Courier New", monospace !default;
+
+$exhub-font-family-base: $exhub-font-family-sans-serif !default;
+
+$exhub-font-size-base: 1rem !default; // 16px
+$exhub-font-size-lg: 1.25rem !default; // 20px
+$exhub-font-size-sm: 0.875rem !default; // 14px;
+
+$exhub-font-weight-normal: 400 !default;
+$exhub-font-weight-bold: 600 !default;
+
+$exhub-font-size-h1: 2rem !default;
+$exhub-font-size-h2: 1.375rem !default;
+$exhub-font-size-h3: 1.25rem !default;
+
+
+$exhub-headings-color: #393C3E !default;
+$exhub-headings-font-family: inherit !default;
+$exhub-headings-font-weight: $exhub-font-weight-bold !default;
+$exhub-headings-line-height: 2.75rem !default;
+
+$exhub-link-font-weight-bold: $exhub-font-weight-bold !default;
+
+
+$exhub-btn-padding-x: 2rem !default;
+$exhub-btn-padding-y: 0.75rem !default;
+$exhub-btn-font-weight: $exhub-font-weight-bold !default;
+$exhub-btn-font-size: 0.875rem !default;
+
+$exhub-btn-primary-color: $exhub-white !default;
+$exhub-btn-primary-bg: $exhub-blue !default;
+
+$exhub-btn-success-color: $exhub-white !default;
+$exhub-btn-success-bg: $exhub-green !default;
+
+
+$exhub-border-radius: 4px !default;
+
+$exhub-btn-border-radius: $exhub-border-radius !default;
+
+
+// Forms
+$exhub-input-padding-y: 0.75rem !default;
+$exhub-input-bg: $exhub-white !default;
+$exhub-input-color: rgba(53, 64, 82, 0.5) !default;
+$exhub-input-border-color: #DFE3E9 !default;
+$exhub-input-border-radius: $exhub-border-radius;
+
+$exhub-input-bg-focus: $exhub-white !default;
+$exhub-input-border-focus: #8D98A9 !default;
+$exhub-input-color-focus: #354052 !default;
+
+$exhub-input-color-placeholder: rgba(53, 64, 82, .5) !default;
+$exhub-input-color-selected: #354052 !default;

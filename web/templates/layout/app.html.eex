@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Elixir Vietnam">
     <title>Elixir Vietnam</title>
-    <link rel=icon href="favicon.ico" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <%= if is_prod do %>
     <link rel="stylesheet" href="<%= bundle_url %>/css/style.css?version=<%= version %>">
     <% end %>
   </head>
-  <body class="infobar-offcanvas sidebar-collapsed">
+  <body>
     <!--[if lt IE 8]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
