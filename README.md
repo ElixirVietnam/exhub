@@ -2,11 +2,14 @@
 
 To start your Phoenix app:
 
+  * Set up a [Github application](https://github.com/settings/applications/new)
   * Rename dev.example.exs to dev.exs
   * Configure your database
   * Install dependencies with `mix deps.get`
+  * Install javascript dependencies with `nmp install`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Start Phoenix endpoint with `mix phoenix.server`
+  * Start Phoenix endpoint with `GITHUB_CLIENT_ID=... GITHUB_CLIENT_SECRET=... mix phoenix.server`
+  * Start webpack with `npm start`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
