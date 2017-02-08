@@ -2,6 +2,7 @@
 
 To start your Phoenix app:
 
+  * Set up a [Github application](https://github.com/settings/applications/new)
   * Rename dev.example.exs to dev.exs
   * Configure your database
   * Install dependencies with `mix deps.get`
@@ -9,6 +10,7 @@ To start your Phoenix app:
   * Install Node dependencies with `npm install`
   * Start Node with `npm start`
   * Start Phoenix endpoint with `mix phoenix.server`
+  * Start Phoenix endpoint with `GITHUB_CLIENT_ID=... GITHUB_CLIENT_SECRET=... mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
